@@ -155,13 +155,16 @@ const Header = ({ siteTitle }) => {
         </div>
         <div className={classes.navBarButtonWrapper}>
           <AnchorLink className={classes.navButton}
-            to="/#sectionOne" title="Section 1">
+            to="/#sectionOne" title="Products">
           </AnchorLink>
           <AnchorLink className={classes.navButton}
-            to="/#sectionTwo" title="Section 2">
+            to="/#sectionTwo" title="About">
           </AnchorLink>
           <AnchorLink className={classes.navButton}
-            to="/#sectionThree" title="Section 3">
+            to="/#sectionThree" title="Contact">
+          </AnchorLink>
+          <AnchorLink className={classes.navButton}
+            to="/#sectionThree" title="New Arrivals">
           </AnchorLink>
 
           <Button

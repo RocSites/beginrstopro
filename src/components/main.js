@@ -539,7 +539,7 @@ const Main = () => {
 
     return (
         <div className={classes.mainRoot}>
-            {/* <div className={classes.mainBanner}>We are closed Tuesday, August 1st. We will reopen Wednesday, August 2nd</div> */}
+            <div className={classes.mainBanner}>add ball wall picture with some text here</div>
 
             <img src={rocBuildingOne} className={classes.landingImage} />
 
@@ -593,9 +593,9 @@ const Main = () => {
                                 </Button>
                             </a>
                             <div className={classes.socialLinkWrapper}>
-                                <a href="" target="_blank" className={classes.socialLink}>
+                                {/* <a href="" target="_blank" className={classes.socialLink}>
                                     <img className={classes.socialFooter} src={InstagramIcon} />
-                                </a>
+                                </a> */}
                                 <a href="" target="_blank" className={classes.socialLink}>
                                     <img className={classes.socialFacebookSpacing} src={FacebookIcon} />
                                 </a>
