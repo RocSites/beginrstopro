@@ -101,7 +101,7 @@ const ContactForm = (props) => {
         <input type="hidden" name="form-name" value="contactPh" />
           <Typography className={classes.formHeader}>Get in Touch</Typography>
             <div style={{textAlign: "center"}}>
-                <a href="tel:" className={classes.footerPhone}>(585) 624-9870</a>
+                <a href="tel:(585) 663-1020" className={classes.footerPhone}>(585) 663-1020</a>
             </div>
 
         <div className={classes.formEmail}>

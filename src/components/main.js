@@ -1,14 +1,19 @@
 import React from 'react'
 import BackgroundImage from "gatsby-background-image"
 import { useStaticQuery, graphql } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
 import { Link } from "gatsby"
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 import rocBuildingOne from "../images/yassine-khalfalli-roc-image.jpg"
+import ballWallImage from "../images/ballwall_5.jpeg"
 import fiveStar from '../images/fiveStar.png'
 import Divider from '@material-ui/core/Divider'
 import PhoneIcon from '@material-ui/icons/Phone'
+import EmailIcon from '@mui/icons-material/Email';
 import StarRateIcon from '@material-ui/icons/StarRate';
 import FacebookIcon from "../images/facebook_icon4.svg"
 import InstagramIcon from "../images/instagram_icon4.svg"
@@ -46,44 +51,6 @@ const withStyles = makeStyles(() => ({
             flexDirection: "column"
         }
     },
-    servicesTitleHeader: {
-        textAlign: "center",
-        fontSize: "1.5rem",
-        marginBottom: "20px"
-    },
-    aboutTextWrapper: {
-        display: "flex",
-        flexDirection: "column",
-        maxWidth: "960px",
-        margin: "20px",
-        "& p": {
-            opacity: "1.0"
-        }
-    },
-    aboutText: {
-        color: "black"
-    },
-    aboutImage: {
-        width: "50%",
-        maxHeight: "500px",
-        maxWidth: "500px",
-        "@media(max-width: 600px)": {
-            width: "100%"
-        }
-    },
-    servicesText: {
-        color: "black"
-    },
-    projectImage: {
-        width: "25%",
-        margin: "25px",
-        maxHeight: "350px"
-    },
-    imageWrapper: {
-        display: "flex",
-        justifyContent: "center",
-        background: "white"
-    },
     someOfWorkHeader: {
         textAlign: "center",
         fontSize: "2rem",
@@ -95,129 +62,13 @@ const withStyles = makeStyles(() => ({
             width: "90%"
         }
     },
-    landingMessageWrapper: {
-        display: "flex",
-        flexDirection: "column",
-        margin: "auto",
-        opacity: "0.85",
-        marginLeft: "0px",
-        marginRight: "0px",
-        height: "150px",
-        "@media(max-width:650px)": {
-            marginTop: "auto"
-        }
-    },
-    landingPageHeader: {
-        color: "black",
-        // background: "#3587de",
-        marginLeft: "0px",
-        marginRight: "0px",
-        fontSize: "3.0em",
-        fontWeight: "500",
-        textAlign: "center",
-        margin: "auto"
-    },
-    landingPageSubHeader: {
-        color: "black",
-        // background: "#3587de",
-        marginLeft: "0px",
-        marginRight: "0px",
-        fontSize: "2em",
-        fontWeight: "500",
-        // fontFamily: "Angkor, sans-serif !important",
-        textAlign: "center",
-        margin: "auto",
-        "@media(max-width: 600px)": {
-            display: "none"
-        }
-    },
-    landingPageSubHeaderMobile: {
-        display: "none",
-        "@media(max-width: 600px)": {
-            display: "block",
-            color: "black",
-            // background: "#3587de",
-            marginLeft: "0px",
-            marginRight: "0px",
-            fontSize: "2em",
-            fontWeight: "100",
-            // fontFamily: "Raleway, sans-serif",
-            textAlign: "center",
-            margin: "auto"
-        }
-    },
-    serviceDivider: {
-        width: "15%",
-        margin: "auto",
-        marginTop: "1.5em",
-        marginBottom: "1.5em",
-        background: "white"
-    },
-    serviceWrapper: {
-        paddingTop: "2.5em"
-    },
     scrollToSectionOne: {
         height: "80px",
         background: "#ffffff"
     },
-    scrollToServices: {
-        paddingBottom: "80px",
-        backgroundColor: "#ffffff"
-    },
     scrollToContact: {
         paddingBottom: "80px",
         backgroundColor: "#ffffff"
-    },
-    servicesListWrapper: {
-        display: "flex",
-        flexWrap: "wrap",
-        alignItems: "center",
-        justifyContent: "center",
-        maxWidth: "1200px",
-        margin: "auto"
-    },
-    servicesCard: {
-        width: "calc(50% - 2.5em)",
-        height: "400px",
-        boxShadow: "none",
-        backgroundColor: "#1563b2",
-        "@media(max-width: 736px)": {
-            width: "100%",
-            margin: "1.25em 0 0 0"
-        }
-    },
-    servicesCardLast: {
-        display: "none",
-        "@media(max-width: 600px)": {
-            display: "flex",
-            height: "100px",
-            color: "transparent",
-            backgroundColor: "transparent",
-            boxShadow: "none"
-        }
-    },
-    servicesCardContent: {
-        position: "relative",
-        textAlign: "center",
-        color: "black",
-        padding: 0,
-        paddingBottom: "0 !important",
-        margin: "10px",
-        height: "400px"
-    },
-    servicesCardImage: {
-        height: "100%",
-        width: "100%",
-    },
-    servicesCardText: {
-        position: "absolute",
-        top: "80%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        fontSize: "1.5rem",
-        fontWeight: "bold",
-        width: "100%",
-        backgroundColor: "#add8e685"
     },
     phoneEmailWrapper: {
         display: "flex",
@@ -250,10 +101,6 @@ const withStyles = makeStyles(() => ({
             boxShadow: 'none',
             cursor: "pointer"
         },
-    },
-    emailA: {
-        marginBottom: "20px",
-        textDecoration: "none"
     },
     reviewsWrapper: {
         display: "flex",
@@ -480,19 +327,74 @@ const withStyles = makeStyles(() => ({
     },
     mainBanner: {
         display: "flex",
-        marginTop: "25%",
-        marginLeft: "25%",
-        marginRight: "15%",
-        textAlign: "center",
-        position: "absolute",
-        backgroundColor: "white",
-        justifyContent: "center",
-        padding: "20px",
-        borderRadius: "35px",
+        backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url(${ballWallImage})`,
+        backgroundSize: "cover",
+        justifyContent: "flex-end",
+        height: "100vh",
         "@media(max-width:600px)": {
-            marginTop: "50%",
-            marginLeft: "15%",
-            marginRight: "15%",
+            justifyContent: "center",
+            backgroundPosition: "center"
+        }
+    },
+    mainBannerText: {
+        color: "white",
+        fontSize: "3.5rem",
+        textAlign: "center",
+        fontWeight: "bold",
+        fontFamily: "'Montserrat', sans-serif !important",
+        zIndex: 1,
+        height: "fit-content",
+        opacity: "0.85",
+        // borderRadius: "35px",
+        padding: "20px",
+        "@media(max-width:600px)": {
+            fontSize: "2rem",
+            textAlign: "center",
+            padding: "15px",
+        }
+    },
+    mainBannerTextWrapper: {
+        display: "flex",
+        margin: "20% auto",
+        width: "100%",
+        flexDirection: "column",
+        "@media(max-width:600px)": {
+            margin: "30% auto"
+        }
+    },
+    getDirectionsLinkDark: {
+        backgroundColor: "#333333",
+        color: "white",
+        textTransform: "none",
+        width: "300px",
+        borderRadius: "35px"
+    },
+    connectHeader: {
+        fontSize: "2rem",
+        textAlign: "center",
+        color: "white",
+        backgroundColor: "#e91e1e"
+        // textTransform: "uppercase"
+    },
+    someOfWorkHeaderProducts: {
+        textAlign: "center",
+        fontSize: "2rem",
+        color: "white",
+        backgroundColor: "#e91e1e",
+        padding: "10px",
+        width: "100%",
+        margin: "auto",
+        "@media(max-width: 600px)": {
+            // padding: "50px 25px",
+        }
+    },
+    productCard: {
+        margin: "15px",
+        "& img": {
+            maxHeight: "345px",
+            width: "100%",
+            aspectRatio: "1/1",
+            objectFit: "cover"
         }
     },
 
@@ -539,19 +441,88 @@ const Main = () => {
 
     return (
         <div className={classes.mainRoot}>
-            <div className={classes.mainBanner}>add ball wall picture with some text here</div>
-
-            <img src={rocBuildingOne} className={classes.landingImage} />
-
-            <section class="sectionWrapper">
-                <div className={classes.container}>
-                    <div className={classes.container}>
-                        <span className={classes.scrollToSectionOne} id="sectionOne"></span>
-                    </div>
-                    <div className={classes.containerMarginBottomSmall}>
-                        <Typography className={classes.someOfWorkHeader}>Section 1 Header Line 1... <br /> Section 1 Line 2.</Typography>
-                    </div>
+            <div className={classes.mainBanner}>
+                <div className={classes.mainBannerTextWrapper}>
+                    <Typography className={classes.mainBannerText}>Begin'rs To Pro's <br />
+                        <Typography>Rochester's premier bowling supply store</Typography>
+                        {/* <i>every time</i> */}
+                    </Typography>
                 </div>
+            </div>
+            <div className={classes.container}>
+                <span className={classes.scrollToSectionOne} id="sectionOne"></span>
+            </div>
+
+            <section class="productSectionWrapper">
+                <div>
+                    <Typography className={classes.someOfWorkHeaderProducts}>Products</Typography>
+                    <div class="productCardWrapper">
+                        <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
+                            <StaticImage src="../images/bball_1.jpeg" />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="div">
+                                    Balls
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    Balls                                </Typography>
+                            </CardContent>
+
+                        </Card>
+                        <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
+                            <StaticImage src="../images/bball_1.jpeg" />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="div">
+                                    Shoes
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    Shoe description
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                        <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
+                            <StaticImage src="../images/bball_1.jpeg" />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="div">
+                                    Bags
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    Bags description                                </Typography>
+                            </CardContent>
+                        </Card>
+                        <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
+                            <StaticImage src="../images/bball_1.jpeg" />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="div">
+                                    Sports Cards
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    Sports cards description
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                        <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
+                            <StaticImage src="../images/bball_1.jpeg" />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="div">
+                                    Trophies & Engravings
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    Trophies & Engravings description
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    </div>
+
+                    {/* {console.log(productInfo.map(obj => obj.imagePath))}
+
+                    <img src={productInfo[0].imagePath}/>
+
+                    {productInfo.length > 0 ? productInfo.map(obj =>
+                        <ProductCard key={obj.title} imagePath={obj.imagePath} title={obj.title} description={obj.description} />
+                    ) : null} */}
+                </div>
+
+
 
             </section>
             <div className={classes.container}>
@@ -584,23 +555,68 @@ const Main = () => {
             <section class="py-5 section-bubble4">
                 <div className={classes.container}>
                     <div>
-                        <Typography className={classes.connectHeader}>Connect With Us</Typography>
+                        <Typography className={classes.connectHeader}>Contact Us</Typography>
                         <div className={classes.phoneEmailWrapper}>
-                            <a href="tel:" className={classes.contactPhone}>
+                            <a href="tel:(585) 663-1020" className={classes.contactPhone}>
                                 <Button className={classes.contactButton}>
                                     <PhoneIcon className={classes.phoneIcon} />
-                                    (123) 456-7890
+                                    (585) 663-1020
+                                </Button>
+                            </a>
+                            <a href="mailto:beginrstopros@gmail.com" className={classes.contactPhone}>
+                                <Button className={classes.contactButton}>
+                                    <EmailIcon className={classes.phoneIcon} />
+                                    Email us
                                 </Button>
                             </a>
                             <div className={classes.socialLinkWrapper}>
                                 {/* <a href="" target="_blank" className={classes.socialLink}>
                                     <img className={classes.socialFooter} src={InstagramIcon} />
                                 </a> */}
-                                <a href="" target="_blank" className={classes.socialLink}>
+                                <a href="https://www.facebook.com/profile.php?id=100057525366325" target="_blank" className={classes.socialLink}>
                                     <img className={classes.socialFacebookSpacing} src={FacebookIcon} />
                                 </a>
                             </div>
 
+                        </div>
+                        <div class="mapWrapper">
+                            <Typography style={{ margin: "15px" }}>1584 W Ridge Rd, Rochester, NY 14615</Typography>
+                            <Button className={classes.getDirectionsLinkDark} href="https://www.google.com/search?q=begin%27rs+to+pro%27s&oq=beg&aqs=chrome.0.69i59j69i61l2j69i60l3j69i61j69i65.949j0j7&sourceid=chrome&ie=UTF-8#" target="_blank">
+                                Get Directions
+                            </Button>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11632.608520682044!2d-77.6656959!3d43.2062984!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d6b15a62e15383%3A0xde8d1c6cda4089a6!2sBegin&#39;rs%20To%20Pro&#39;s!5e0!3m2!1sen!2sus!4v1694634609218!5m2!1sen!2sus" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div style={{ backgroundColor: "white" }}>
+                            <Typography className={classes.connectHeader}>Hours</Typography>
+                            <div class="hoursWrapper">
+                                <div class="hoursDayTime">
+                                    <p>Monday - Friday</p>
+                                    <p class="hoursTime">11:00 AM - 6:00 PM</p>
+                                </div>
+                                <div class="hoursDayTime">
+                                    <p>Saturday</p>
+                                    <p class="hoursTime">11:00 AM - 3:00 PM</p>
+                                </div>
+                                <div class="hoursDayTime">
+                                    <p>Sunday</p>
+                                    <p class="hoursTime">Closed</p>
+                                </div>
+                            </div>
+                            <div className={classes.reviewsWrapper}>
+                                <a className={classes.reviewLink}
+                                    href=""
+                                    target="_blank"
+                                >
+                                    <Button
+                                        className={classes.reviewButton}
+                                    >
+                                        <div className={classes.reviewStarWrapper}>
+                                            <Typography className={classes.reviewHeader}>Leave us a review!</Typography>
+                                            <img className={classes.socialFooterMargin} src={GoogleIcon} />
+                                        </div>
+                                    </Button>
+                                </a>
+                            </div>
                         </div>
                         <div className={classes.reviewsWrapper}>
                             <a className={classes.reviewLink}

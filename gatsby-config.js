@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Rocsites Gastby template 3`,
-    description: `Generic Gatsby template for businesses`,
+    title: `Begin'rs To Pro's`,
+    description: `Bowling Proshop and Trophy and Award Engraver located In Stoneridge Plaza in Greece NY`,
     author: `Doug Kellermeyer`,
   },
   plugins: [

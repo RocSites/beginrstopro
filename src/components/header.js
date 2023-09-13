@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core'
 import scrollTo from 'gatsby-plugin-smoothscroll'
 import Button from '@material-ui/core/Button'
 import chillGrillLogoOG from '../images/chill_logo_og.jpeg'
-import RocSitesLogo from "../images/logo/logo.png"
+import BeginrsLogo from "../images/beginrs_logo.jpeg"
 import coneIcon from "../images/cone_icon.png"
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -29,7 +29,7 @@ const withStyles = makeStyles(() => ({
   navBarRoot: {
     position: "fixed",
     display: "flex",
-    background: "gray",
+    background: "black",
     color: "white",
     justifyContent: "space-between",
     width: "100%",
@@ -44,7 +44,7 @@ const withStyles = makeStyles(() => ({
     padding: `1.45rem 1.0875rem`,
   },
   navButton: {
-    color: "black",
+    color: "white",
     // fontWeight: "bold",
     textTransform: "none",
     margin: "auto 10px",
@@ -67,7 +67,7 @@ const withStyles = makeStyles(() => ({
   },
   navLogo: {
     display: "flex",
-    width: "60px",
+    width: "160px",
     margin: "auto",
   },
   drawerItem: {
@@ -98,7 +98,7 @@ const withStyles = makeStyles(() => ({
   },
   navCallButton: {
     display: "flex",
-    backgroundColor: "#f03d3dcf",
+    backgroundColor: "#e91e1e",
     padding: "8px 16px",
     color: "white",
     textTransform: "none",
@@ -108,7 +108,7 @@ const withStyles = makeStyles(() => ({
   },
   navCallButtonMobile: {
     display: "flex",
-    backgroundColor: "#f03d3dcf",
+    backgroundColor: "#e91e1e",
     padding: "8px 16px",
     color: "white",
     textTransform: "none",
@@ -150,7 +150,7 @@ const Header = ({ siteTitle }) => {
       <div className={classes.navLeftWrapper}>
         <div className={classes.navBarTitle}>
           <Link to="/" style={{ color: '#001841', textDecoration: `none` }}>
-            <img className={classes.navLogo} src={RocSitesLogo} alt="company logo" />
+            <img className={classes.navLogo} src={BeginrsLogo} alt="company logo" />
           </Link>
         </div>
         <div className={classes.navBarButtonWrapper}>
@@ -169,7 +169,7 @@ const Header = ({ siteTitle }) => {
 
           <Button
             className={classes.navCallButton}
-            target="_blank" href="tel:"
+            target="_blank" href="tel:(585) 663-1020"
           >
             <PhoneIcon class="drawerPhoneIcon" />
             Call Us
@@ -178,17 +178,17 @@ const Header = ({ siteTitle }) => {
       </div>
 
       <div class="socialLinkWrapperNav">
-        <a href="" target="_blank" class="socialLink">
+        {/* <a href="" target="_blank" class="socialLink">
           <img class="socialNav" src={InstagramIcon} />
-        </a>
-        <a href="" target="_blank" class="socialLink">
+        </a> */}
+        <a href="https://www.facebook.com/profile.php?id=100057525366325" target="_blank" class="socialLink">
           <img class="socialNavFb" src={FacebookIcon} />
         </a>
       </div>
       <div className={classes.navBarHamburgerDrawerWrapper}>
         <Button
           className={classes.navCallButtonMobile}
-          target="_blank" href="tel:"
+          target="_blank" href="tel:(585) 663-1020"
         >
           <PhoneIcon class="drawerPhoneIcon" />
           Call Us
@@ -224,7 +224,7 @@ const Header = ({ siteTitle }) => {
 
               <Button
                 class="drawerItemLogin"
-                target="_blank" href="tel:"
+                target="_blank" href="tel:(585) 663-1020"
               >
                 <PhoneIcon class="drawerPhoneIcon" />
                 Call Us
