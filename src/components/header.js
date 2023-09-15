@@ -29,7 +29,7 @@ const withStyles = makeStyles(() => ({
   navBarRoot: {
     position: "fixed",
     display: "flex",
-    background: "#deddc1",
+    background: "black",
     color: "white",
     justifyContent: "space-between",
     width: "100%",
@@ -44,7 +44,7 @@ const withStyles = makeStyles(() => ({
     padding: `1.45rem 1.0875rem`,
   },
   navButton: {
-    color: "#a91806",
+    color: "white",
     // fontWeight: "bold",
     textTransform: "none",
     margin: "auto 10px",
@@ -126,7 +126,7 @@ const withStyles = makeStyles(() => ({
     flexDirection: "column",
   },
   navButtonMobile: {
-  color: "white",
+  color: "black",
   // fontWeight: "bold",
   textTransform: "none",
   margin: "10px 16px",
@@ -165,7 +165,7 @@ const Header = ({ siteTitle }) => {
             to="/#sectionThree" title="About">
           </AnchorLink>
           <AnchorLink className={classes.navButton}
-            to="/#sectionTwo" title="Contact">
+            to="/#contactForm" title="Contact">
           </AnchorLink>
       
 
@@ -214,13 +214,16 @@ const Header = ({ siteTitle }) => {
             <List>
               <div className={classes.drawerLinkWrapper}>
                 <AnchorLink className={classes.navButtonMobile}
-                  to="/#sectionOne" title="Section 1">
+                  to="/#sectionTwo" title="Products">
                 </AnchorLink>
                 <AnchorLink className={classes.navButtonMobile}
-                  to="/#sectionTwo" title="Section 2">
+                  to="/#sectionOne" title="New Arrivals">
                 </AnchorLink>
                 <AnchorLink className={classes.navButtonMobile}
-                  to="/#sectionThree" title="Section 3">
+                  to="/#sectionThree" title="About">
+                </AnchorLink>
+                <AnchorLink className={classes.navButtonMobile}
+                  to="/#contactForm" title="Contact">
                 </AnchorLink>
               </div>
 

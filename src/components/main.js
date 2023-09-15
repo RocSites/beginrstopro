@@ -88,15 +88,15 @@ const withStyles = makeStyles(() => ({
         }
     },
     contactPhone: {
-        color: "black",
+        color: "#a91806",
         textDecoration: "none",
         // fontFamily: "Raleway, sans-serif",
     },
     contactButton: {
         margin: "20px",
-        backgroundColor: "#333333",
+        backgroundColor: "#a91806",
         color: "white",
-        borderColor: "#333333",
+        borderColor: "#a91806",
         borderRadius: "35px",
         padding: "15px",
         paddingLeft: "25px",
@@ -239,9 +239,8 @@ const withStyles = makeStyles(() => ({
     },
     aboutTitleHeader: {
         textAlign: "center",
-        fontSize: "2rem",
+        fontSize: "2.5rem",
         color: "black",
-        textTransform: "uppercase",
         marginBottom: 0
     },
     addressText: {
@@ -256,12 +255,6 @@ const withStyles = makeStyles(() => ({
     scrollToLocation: {
         height: "100px",
         flexDirection: "column"
-    },
-    connectHeader: {
-        fontSize: "2rem",
-        textAlign: "center",
-        color: "black",
-        textTransform: "uppercase"
     },
     socialLinkWrapper: {
         display: "flex",
@@ -387,7 +380,7 @@ const withStyles = makeStyles(() => ({
     connectHeader: {
         fontSize: "2rem",
         textAlign: "center",
-        color: "white",
+        color: "black",
         backgroundColor: "white"
         // textTransform: "uppercase"
     },
@@ -504,7 +497,7 @@ const Main = () => {
                     <Typography className={classes.someOfWorkHeaderProducts}>Products</Typography>
                     <div class="productCardWrapper">
                         <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
-                            <StaticImage src="../images/bball_1.jpeg" />
+                            <StaticImage src="../images/ball_closeup.jpeg" />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="div">
                                     Balls
@@ -515,7 +508,7 @@ const Main = () => {
 
                         </Card>
                         <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
-                            <StaticImage src="../images/bball_1.jpeg" />
+                            <StaticImage src="../images/shoewall_1.jpg" />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="div">
                                     Shoes
@@ -526,7 +519,7 @@ const Main = () => {
                             </CardContent>
                         </Card>
                         <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
-                            <StaticImage src="../images/bball_1.jpeg" />
+                            <StaticImage src="../images/just_bags.jpeg" />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="div">
                                     Bags
@@ -536,7 +529,7 @@ const Main = () => {
                             </CardContent>
                         </Card>
                         <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
-                            <StaticImage src="../images/bball_1.jpeg" />
+                            <StaticImage src="../images/cards_hockey_1.jpeg" />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="div">
                                     Sports Cards
@@ -547,7 +540,7 @@ const Main = () => {
                             </CardContent>
                         </Card>
                         <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
-                            <StaticImage src="../images/bball_1.jpeg" />
+                            <StaticImage src="../images/trophywall_1.jpg" />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="div">
                                     Trophies & Engravings
@@ -558,7 +551,7 @@ const Main = () => {
                             </CardContent>
                         </Card>
                         <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
-                            <StaticImage src="../images/bball_1.jpeg" />
+                        <StaticImage src="../images/trophywall_2.jpg" />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="div">
                                     Awards
@@ -594,19 +587,6 @@ const Main = () => {
             </section>
             <span className={classes.scrollToLocation} id="sectionThree"></span>
 
-            <section class="py-5 section-bubble3">
-                <div className={classes.container}>
-                    <div className={classes.aboutWrapper}>
-                        <div className={classes.aboutSectionWrapper}>
-                            <Typography className={classes.aboutTitleHeader}>About Us</Typography>
-                            <Typography className={classes.addressText}>Section 3 subtext</Typography>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url(${ballWallImage})`,
-
 
             <span className={classes.scrollToContact} id="contactForm"></span>
             <section class="py-5 section-bubble4">
@@ -641,6 +621,7 @@ const Main = () => {
                             <Button className={classes.getDirectionsLinkDark} href="https://www.google.com/search?q=begin%27rs+to+pro%27s&oq=beg&aqs=chrome.0.69i59j69i61l2j69i60l3j69i61j69i65.949j0j7&sourceid=chrome&ie=UTF-8#" target="_blank">
                                 Get Directions
                             </Button>
+                            <br/>
                             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11632.608520682044!2d-77.6656959!3d43.2062984!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d6b15a62e15383%3A0xde8d1c6cda4089a6!2sBegin&#39;rs%20To%20Pro&#39;s!5e0!3m2!1sen!2sus!4v1694634609218!5m2!1sen!2sus" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                         <div style={{ backgroundColor: "white" }}>
@@ -675,7 +656,7 @@ const Main = () => {
                                 </a>
                             </div>
                         </div>
-                        <div className={classes.reviewsWrapper}>
+                        {/* <div className={classes.reviewsWrapper}>
                             <a className={classes.reviewLink}
                                 href=""
                                 target="_blank"
@@ -690,7 +671,7 @@ const Main = () => {
                                     </div>
                                 </Button>
                             </a>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </section>

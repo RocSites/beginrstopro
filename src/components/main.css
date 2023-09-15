@@ -219,7 +219,7 @@ body {
 
 .footerRoot {
     display: flex;
-    background-color: #333333;
+    background-color: black;
     color: white;
     height: 110px;
 }
@@ -334,5 +334,9 @@ body {
     .navCallButton,
     .navCallButtonMobile {
         font-size: 0.75rem;
+    }
+    .newArrivalWrapper {
+        flex-direction: column;
+        width: 100%;
     }
 }
