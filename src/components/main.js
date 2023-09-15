@@ -43,8 +43,9 @@ const withStyles = makeStyles(() => ({
     },
     aboutWrapper: {
         display: "flex",
-        margin: "auto",
-        margin: "20px",
+        flexDirection: "column",
+        justifyContent: "center",
+        margin: "0 1rem",
         color: "black",
         marginBottom: "50px",
         "@media(max-width: 600px)": {
@@ -62,10 +63,22 @@ const withStyles = makeStyles(() => ({
             width: "90%"
         }
     },
+    newArrivalImage: {
+        borderRadius: "15px 0px 0 15px",
+        width: "50%",
+        maxHeight: "500px",
+        "@media(max-width: 600px)": {
+            borderRadius: "15px 15px 0px 0px",
+            width: "100%"
+        }
+    },
     arrivalText: {
         color: "#deddc1",
         padding: "30px",
-        width: "50%"
+        width: "50%",
+        "@media(max-width: 600px)": {
+            width: "100%"
+        }
     },
     scrollToSectionOne: {
         height: "80px",
@@ -243,14 +256,14 @@ const withStyles = makeStyles(() => ({
         color: "black",
         marginBottom: 0
     },
-    addressText: {
-        textAlign: "center",
-        margin: "40px 0"
+    aboutHeader: {
+        fontSize: "1.5rem",
+        textAlign: "center"
     },
-    aboutWrapper: {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center"
+    addressText: {
+        textAlign: "left",
+        margin: "40px 0",
+        lineHeight: 2,
     },
     scrollToLocation: {
         height: "100px",
@@ -410,6 +423,9 @@ const withStyles = makeStyles(() => ({
         },
         "& p": {
             color: "#deddc1"
+        },
+        "@media(max-width: 600px)": {
+            margin: "15px 0"
         }
     },
 
@@ -472,11 +488,11 @@ const Main = () => {
                 <Typography className={classes.someOfWorkHeader}>New Items & Arrivals</Typography>
 
                 <div class="newArrivalWrapper">
-                    <StaticImage style={{ borderRadius: "15px 0px 0 15px", width: "50%", maxHeight: "500px" }} src="../images/new_balls_1.jpeg" />
+                    <StaticImage className={classes.newArrivalImage} src="../images/new_balls_1.jpeg" />
                     <Typography className={classes.arrivalText}>It's release day! Let's get one or more of these rocks in your hands for the new season. Stop in and see us so we can get your game in shape for the new year.</Typography>
                 </div>
                 <div class="newArrivalWrapper">
-                    <StaticImage style={{ borderRadius: "15px 0px 0 15px", width: "50%", maxHeight: "500px" }} src="../images/new_app_1.jpeg" />
+                    <StaticImage className={classes.newArrivalImage} src="../images/new_app_1.jpeg" />
                     <Typography className={classes.arrivalText}>When you purchase the In2ition, get a FREE Apparel Package</Typography>
                 </div>
 
@@ -528,17 +544,22 @@ const Main = () => {
                                     Bags description                                </Typography>
                             </CardContent>
                         </Card>
-                        <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
-                            <StaticImage src="../images/cards_hockey_1.jpeg" />
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="div">
-                                    Sports Cards
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    Sports cards description
-                                </Typography>
-                            </CardContent>
-                        </Card>
+                        <Link style={{textDecoration: "none"}} to="/sports-cards">
+
+                            <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
+                                <StaticImage src="../images/cards_hockey_1.jpeg" />
+
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        Sports Cards
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        Sports cards description
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Link>
+
                         <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
                             <StaticImage src="../images/trophywall_1.jpg" />
                             <CardContent>
@@ -551,7 +572,7 @@ const Main = () => {
                             </CardContent>
                         </Card>
                         <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
-                        <StaticImage src="../images/trophywall_2.jpg" />
+                            <StaticImage src="../images/trophywall_2.jpg" />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="div">
                                     Awards
@@ -580,7 +601,39 @@ const Main = () => {
                     <div className={classes.aboutWrapper}>
                         <div className={classes.aboutSectionWrapper}>
                             <Typography className={classes.aboutTitleHeader}>About Us</Typography>
-                            <Typography className={classes.addressText}>Section 3 subtext</Typography>
+                            <Typography className={classes.addressText}>
+                                At Begin'rs To Pro's Pro Shop, we take pride in being your trusted source for all things
+                                bowling. Whether you're an experienced pro or just starting your journey in the world of bowling, we have the expertise and
+                                equipment to help you excel. Explore our extensive collection of bowling balls, shoes, and apparel, ensuring that you find the perfect fit and style to enhance your game. Our knowledgeable staff is always available to offer expert guidance, ensuring you get the ideal gear for your unique needs.
+                            </Typography>
+                            <Typography className={classes.aboutHeader}>Sports Card Collectors' Paradise:</Typography>
+                            <Typography className={classes.addressText}>
+                                In addition to our outstanding bowling gear, Begin'rs To Pro's Pro Shop is a haven for sports card enthusiasts.
+                                We offer a diverse range of sports cards, including baseball, hockey, and vintage cards.
+                                Whether you're searching for a specific card or are looking to offload some of your own collection, we'd love to have you stop by.
+                            </Typography>
+
+                            <Typography className={classes.aboutHeader}>Celebrate Excellence</Typography>
+                            <Typography className={classes.addressText}>Beyond bowling and sports cards, Begin'rs To Pro's Pro Shop specializes in
+                                celebrating excellence. We provide a wide selection of trophies and awards to honor
+                                achievements in sports, academics, and more. Our expert engraving services allow you to
+                                personalize your awards, creating enduring mementos of success.
+                            </Typography>
+
+                            <div class="valuesWrapper">
+                                <br />
+                                <Typography className={classes.aboutHeader}>Our Values</Typography>
+                                <br />
+                                <p><b>Passion and Expertise:</b> Our team is driven by a genuine love for bowling and sports collectibles. We're here to share our passion and knowledge with you.
+                                </p>
+
+                                <p><b>Quality Products:</b> We stock only the finest bowling equipment, sports cards, trophies, and awards to ensure your complete satisfaction.
+                                </p>
+                                <p><b>Personalized Service:</b> Whether you're a first-time visitor or a long-time customer, we treat everyone like family. Expect exceptional service tailored to your unique needs.
+                                </p>
+                                <p><b>Community Focus:</b> Begin'rs To Pro's Pro Shop is more than just a store; it's a gathering place for individuals who share a love for bowling and sports collectibles.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -621,7 +674,7 @@ const Main = () => {
                             <Button className={classes.getDirectionsLinkDark} href="https://www.google.com/search?q=begin%27rs+to+pro%27s&oq=beg&aqs=chrome.0.69i59j69i61l2j69i60l3j69i61j69i65.949j0j7&sourceid=chrome&ie=UTF-8#" target="_blank">
                                 Get Directions
                             </Button>
-                            <br/>
+                            <br />
                             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11632.608520682044!2d-77.6656959!3d43.2062984!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d6b15a62e15383%3A0xde8d1c6cda4089a6!2sBegin&#39;rs%20To%20Pro&#39;s!5e0!3m2!1sen!2sus!4v1694634609218!5m2!1sen!2sus" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                         <div style={{ backgroundColor: "white" }}>

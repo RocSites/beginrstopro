@@ -48,6 +48,33 @@ body {
     font-size: 1.75rem;
 }
 
+.hoursWrapper {
+    display: flex;
+    margin: 30px auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+
+}
+
+.hoursWrapper p {
+    text-align: left;
+    font-weight: bold;
+}
+
+.hoursTime {
+    color: #a91806;
+
+    font-weight: normal !important;
+}
+
+.hoursDayTime {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .menuBlockWrapper {
     display: flex;
 }
@@ -175,6 +202,15 @@ body {
     justify-content: center;
 }
 
+.valuesWrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: #deddc1;
+    border-radius: 15px;
+    padding: 20px;
+    color: black;
+}
+
 .scrollToLocation {
     height: 100px;
     background-color: white;
@@ -219,15 +255,15 @@ body {
 
 .footerRoot {
     display: flex;
-    background-color: black;
+    background-color: #a91806;
     color: white;
-    height: 110px;
 }
 
 .rocsitesText {
     font-size: 0.7rem;
     margin-bottom: 15px;
     color: white;
+    text-align: center;
 }
 
 .rocsitesText a {
@@ -252,8 +288,8 @@ body {
 
 .socialLinkWrapper {
     display: flex;
-    justify-content: center;
-    margin: 20px 0 40px 0;
+    justify-content: flex-start;
+    margin: 20px 0 20px 0;
 }
 
 .socialLinkWrapperNav {
@@ -303,6 +339,10 @@ body {
 .addressText {
     text-align: center;
     margin: 40px 0;
+    background-color: #a91806;
+    color: white;
+    border-radius: 15px;
+    padding: 20px;
 }
 
 @keyframes twinkle {
@@ -335,6 +375,7 @@ body {
     .navCallButtonMobile {
         font-size: 0.75rem;
     }
+
     .newArrivalWrapper {
         flex-direction: column;
         width: 100%;
