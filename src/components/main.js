@@ -64,7 +64,7 @@ const withStyles = makeStyles(() => ({
     },
     scrollToSectionOne: {
         height: "80px",
-        background: "#ffffff"
+        backgroundColor: "#deddc1"
     },
     scrollToContact: {
         paddingBottom: "80px",
@@ -311,6 +311,12 @@ const withStyles = makeStyles(() => ({
         flexDirection: "column",
         margin: "20px 0"
     },
+    containerThemeColorOne: {
+        display: "flex",
+        flexDirection: "column",
+        margin: "20px 0",
+        backgroundColor: "#deddc1"
+    },
     containerMarginBottomSmall: {
         display: "flex",
         flexDirection: "column",
@@ -373,14 +379,14 @@ const withStyles = makeStyles(() => ({
         fontSize: "2rem",
         textAlign: "center",
         color: "white",
-        backgroundColor: "#e91e1e"
+        backgroundColor: "white"
         // textTransform: "uppercase"
     },
     someOfWorkHeaderProducts: {
         textAlign: "center",
         fontSize: "2rem",
-        color: "white",
-        backgroundColor: "#e91e1e",
+        color: "#a91806",
+        backgroundColor: "white",
         padding: "10px",
         width: "100%",
         margin: "auto",
@@ -390,11 +396,18 @@ const withStyles = makeStyles(() => ({
     },
     productCard: {
         margin: "15px",
+        backgroundColor: "#a91806 !important",
         "& img": {
             maxHeight: "345px",
             width: "100%",
             aspectRatio: "1/1",
             objectFit: "cover"
+        },
+        "& div": {
+            color: "#deddc1"
+        },
+        "& p": {
+            color: "#deddc1"
         }
     },
 
@@ -453,6 +466,21 @@ const Main = () => {
                 <span className={classes.scrollToSectionOne} id="sectionOne"></span>
             </div>
 
+            <section class="sectionTwoThemeColorOne">
+                <Typography className={classes.someOfWorkHeader}>New Items & Arrivals</Typography>
+
+                <Link to="/chill-menu" class="menuContent menuLink chillBlock">
+                    Page 2
+                </Link>
+                <Link to="/grill-menu" class="menuContent menuLink grillBlock">
+                    Page 3
+                </Link>
+            </section>
+
+     
+            <div className={classes.containerThemeColorOne}>
+                <span className={classes.scrollToSectionOne} id="sectionTwo"></span>
+            </div>
             <section class="productSectionWrapper">
                 <div>
                     <Typography className={classes.someOfWorkHeaderProducts}>Products</Typography>
@@ -511,6 +539,17 @@ const Main = () => {
                                 </Typography>
                             </CardContent>
                         </Card>
+                        <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
+                            <StaticImage src="../images/bball_1.jpeg" />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="div">
+                                    Awards
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    Awards descriptions
+                                </Typography>
+                            </CardContent>
+                        </Card>
                     </div>
 
                     {/* {console.log(productInfo.map(obj => obj.imagePath))}
@@ -523,20 +562,6 @@ const Main = () => {
                 </div>
 
 
-
-            </section>
-            <div className={classes.container}>
-                <span className={classes.scrollToSectionOne} id="sectionTwo"></span>
-            </div>
-            <section class="sectionWrapper">
-                <Typography className={classes.someOfWorkHeader}>Section 2 Header Line 1... <br /> Section 2 Line 2.</Typography>
-
-                <Link to="/chill-menu" class="menuContent menuLink chillBlock">
-                    Page 2
-                </Link>
-                <Link to="/grill-menu" class="menuContent menuLink grillBlock">
-                    Page 3
-                </Link>
             </section>
             <span className={classes.scrollToLocation} id="sectionThree"></span>
 

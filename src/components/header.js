@@ -29,7 +29,7 @@ const withStyles = makeStyles(() => ({
   navBarRoot: {
     position: "fixed",
     display: "flex",
-    background: "black",
+    background: "#deddc1",
     color: "white",
     justifyContent: "space-between",
     width: "100%",
@@ -37,14 +37,14 @@ const withStyles = makeStyles(() => ({
     top: 0,
     boxShadow: "1px 0 10px 0 rgb(89 98 115 / 20%)",
     zIndex: "1",
-    opacity: "0.85"
+    // opacity: "0.85"
   },
   navBarTitle: {
     maxWidth: 960,
     padding: `1.45rem 1.0875rem`,
   },
   navButton: {
-    color: "white",
+    color: "#a91806",
     // fontWeight: "bold",
     textTransform: "none",
     margin: "auto 10px",
@@ -98,9 +98,9 @@ const withStyles = makeStyles(() => ({
   },
   navCallButton: {
     display: "flex",
-    backgroundColor: "#e91e1e",
+    backgroundColor: "#a91806",
     padding: "8px 16px",
-    color: "white",
+    color: "#deddc1",
     textTransform: "none",
     borderRadius: "35px",
     height: "50px",
@@ -108,9 +108,9 @@ const withStyles = makeStyles(() => ({
   },
   navCallButtonMobile: {
     display: "flex",
-    backgroundColor: "#e91e1e",
+    backgroundColor: "#a91806",
     padding: "8px 16px",
-    color: "white",
+    color: "#deddc1",
     textTransform: "none",
     borderRadius: "35px",
     height: "50px",
@@ -155,17 +155,18 @@ const Header = ({ siteTitle }) => {
         </div>
         <div className={classes.navBarButtonWrapper}>
           <AnchorLink className={classes.navButton}
-            to="/#sectionOne" title="Products">
+            to="/#sectionTwo" title="Products">
           </AnchorLink>
           <AnchorLink className={classes.navButton}
-            to="/#sectionTwo" title="About">
+            to="/#sectionOne" title="New Arrivals">
           </AnchorLink>
           <AnchorLink className={classes.navButton}
-            to="/#sectionThree" title="Contact">
+            to="/#sectionThree" title="About">
           </AnchorLink>
           <AnchorLink className={classes.navButton}
-            to="/#sectionThree" title="New Arrivals">
+            to="/#sectionTwo" title="Contact">
           </AnchorLink>
+      
 
           <Button
             className={classes.navCallButton}
