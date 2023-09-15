@@ -53,8 +53,8 @@ const withStyles = makeStyles(() => ({
     },
     someOfWorkHeader: {
         textAlign: "center",
-        fontSize: "2rem",
-        color: "black",
+        fontSize: "2.5rem",
+        color: "#a91806",
         padding: "10px",
         width: "100%",
         margin: "auto",
@@ -62,7 +62,16 @@ const withStyles = makeStyles(() => ({
             width: "90%"
         }
     },
+    arrivalText: {
+        color: "#deddc1",
+        padding: "30px",
+        width: "50%"
+    },
     scrollToSectionOne: {
+        height: "80px",
+        backgroundColor: "white"
+    },
+    scrollToProduct: {
         height: "80px",
         backgroundColor: "#deddc1"
     },
@@ -314,7 +323,7 @@ const withStyles = makeStyles(() => ({
     containerThemeColorOne: {
         display: "flex",
         flexDirection: "column",
-        margin: "20px 0",
+        padding: "20px 0",
         backgroundColor: "#deddc1"
     },
     containerMarginBottomSmall: {
@@ -384,9 +393,9 @@ const withStyles = makeStyles(() => ({
     },
     someOfWorkHeaderProducts: {
         textAlign: "center",
-        fontSize: "2rem",
+        fontSize: "2.5rem",
         color: "#a91806",
-        backgroundColor: "white",
+        backgroundColor: "#deddc1",
         padding: "10px",
         width: "100%",
         margin: "auto",
@@ -469,17 +478,26 @@ const Main = () => {
             <section class="sectionTwoThemeColorOne">
                 <Typography className={classes.someOfWorkHeader}>New Items & Arrivals</Typography>
 
-                <Link to="/chill-menu" class="menuContent menuLink chillBlock">
+                <div class="newArrivalWrapper">
+                    <StaticImage style={{ borderRadius: "15px 0px 0 15px", width: "50%", maxHeight: "500px" }} src="../images/new_balls_1.jpeg" />
+                    <Typography className={classes.arrivalText}>It's release day! Let's get one or more of these rocks in your hands for the new season. Stop in and see us so we can get your game in shape for the new year.</Typography>
+                </div>
+                <div class="newArrivalWrapper">
+                    <StaticImage style={{ borderRadius: "15px 0px 0 15px", width: "50%", maxHeight: "500px" }} src="../images/new_app_1.jpeg" />
+                    <Typography className={classes.arrivalText}>When you purchase the In2ition, get a FREE Apparel Package</Typography>
+                </div>
+
+                {/* <Link to="/chill-menu" class="menuContent menuLink chillBlock">
                     Page 2
                 </Link>
                 <Link to="/grill-menu" class="menuContent menuLink grillBlock">
                     Page 3
-                </Link>
+                </Link> */}
             </section>
 
-     
+
             <div className={classes.containerThemeColorOne}>
-                <span className={classes.scrollToSectionOne} id="sectionTwo"></span>
+                <span className={classes.scrollToProduct} id="sectionTwo"></span>
             </div>
             <section class="productSectionWrapper">
                 <div>
@@ -563,18 +581,32 @@ const Main = () => {
 
 
             </section>
+
+            <section class="py-5 section-bubble3">
+                <div className={classes.container}>
+                    <div className={classes.aboutWrapper}>
+                        <div className={classes.aboutSectionWrapper}>
+                            <Typography className={classes.aboutTitleHeader}>About Us</Typography>
+                            <Typography className={classes.addressText}>Section 3 subtext</Typography>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <span className={classes.scrollToLocation} id="sectionThree"></span>
 
             <section class="py-5 section-bubble3">
                 <div className={classes.container}>
                     <div className={classes.aboutWrapper}>
                         <div className={classes.aboutSectionWrapper}>
-                            <Typography className={classes.aboutTitleHeader}>Section 3</Typography>
+                            <Typography className={classes.aboutTitleHeader}>About Us</Typography>
                             <Typography className={classes.addressText}>Section 3 subtext</Typography>
                         </div>
                     </div>
                 </div>
             </section>
+
+            backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url(${ballWallImage})`,
+
 
             <span className={classes.scrollToContact} id="contactForm"></span>
             <section class="py-5 section-bubble4">

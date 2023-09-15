@@ -69,6 +69,7 @@ const withStyles = makeStyles(() => ({
     display: "flex",
     width: "160px",
     margin: "auto",
+    borderRadius: "15px"
   },
   drawerItem: {
     "&:hover": {

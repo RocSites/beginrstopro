@@ -22,10 +22,24 @@ body {
 }
 
 .sectionTwoThemeColorOne {
-    background-color: #deddc1;
+    background-color: white;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    padding: 1rem;
 }
+
+.newArrivalWrapper {
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+    background-color: #a91806;
+    border-radius: 15px;
+    max-height: 500px;
+}
+
 
 .hourlyHeaderText {
     display: flex;
@@ -105,7 +119,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     padding: 50px 25px;
-    background-color: white;
+    background-color: #deddc1;
 
 }
 
