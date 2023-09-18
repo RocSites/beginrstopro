@@ -624,14 +624,14 @@ const Main = () => {
                                 <br />
                                 <Typography className={classes.aboutHeader}>Our Values</Typography>
                                 <br />
-                                <p><b>Passion and Expertise:</b> Our team is driven by a genuine love for bowling and sports collectibles. We're here to share our passion and knowledge with you.
+                                <p><b>Passion and Expertise:</b> Our team is driven by a genuine love for bowling. We're here to share our passion and knowledge with you.
                                 </p>
 
-                                <p><b>Quality Products:</b> We stock only the finest bowling equipment, sports cards, trophies, and awards to ensure your complete satisfaction.
+                                <p><b>Quality Products:</b> We stock only the finest bowling equipment, trophies, and awards to ensure your complete satisfaction.
                                 </p>
                                 <p><b>Personalized Service:</b> Whether you're a first-time visitor or a long-time customer, we treat everyone like family. Expect exceptional service tailored to your unique needs.
                                 </p>
-                                <p><b>Community Focus:</b> Begin'rs To Pro's Pro Shop is more than just a store; it's a gathering place for individuals who share a love for bowling and sports collectibles.
+                                <p><b>Community Focus:</b> Begin'rs To Pro's Pro Shop is more than just a store; it's a gathering place for individuals who share a love for bowling.
                                 </p>
                             </div>
                         </div>
