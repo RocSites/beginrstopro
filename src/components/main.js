@@ -1,5 +1,5 @@
-import React from 'react'
-import BackgroundImage from "gatsby-background-image"
+import React, { useEffect, useState } from 'react'
+import axios from "axios"
 import { useStaticQuery, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
@@ -433,40 +433,27 @@ const withStyles = makeStyles(() => ({
 
 const Main = () => {
     const classes = withStyles();
-    const { mobileImage, desktopImage } = useStaticQuery(graphql`
-    query { 
-      desktopImage: file(relativePath: { eq: "yassine-khalfalli-roc-image.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 1920, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      mobileImage: file(relativePath: { eq: "yassine-khalfalli-roc-image.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 650, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      
-    }
-  `)
 
-    const sources = [
-        mobileImage.childImageSharp.fluid,
-        {
-            ...desktopImage.childImageSharp.fluid,
-            media: `(min-width: 650px)`
-        }
-    ]
 
-    const FiveStar = () => {
-        return (
-            <div className={classes.fiveStar}>
-                <StarRateIcon /><StarRateIcon /><StarRateIcon /><StarRateIcon /><StarRateIcon />
-            </div>
-        )
+    const [response, setResponse] = useState([]);
+    const [ballsUrl, setBallsUrl] = useState([]);
+
+    //   TODO - make calls to all content types and filter for all featured
+    // TODO - create object that builds the cards, including the formatted image urls list, as index and element order may get messy
+    const baseURLBalls = "https://strapi.b2pproshop.com/api/balls?populate=*"
+
+    useEffect(() => {
+        axios.get(baseURLBalls).then((response) => {
+            setResponse(response.data);
+            if (response.data.data.length > 0) {
+                formatImages(response.data)
+            }
+        });
+    }, [])
+
+    const formatImages = (resp) => {
+        let dataArr = resp.data.map(x => x.attributes.image.data);
+        setBallsUrl(dataArr.map(obj => obj.attributes.formats.small.url))
     }
 
 
@@ -486,22 +473,13 @@ const Main = () => {
 
             <section class="sectionTwoThemeColorOne">
                 <Typography className={classes.someOfWorkHeader}>New Items & Arrivals</Typography>
+                {ballsUrl.length > 0 ? ballsUrl.map(url => (
+                    <div class="newArrivalWrapper">
+                        <img className={classes.newArrivalImage} src={url} />
+                        <Typography className={classes.arrivalText}></Typography>
+                    </div>
+                )) : null}
 
-                <div class="newArrivalWrapper">
-                    <StaticImage className={classes.newArrivalImage} src="../images/new_balls_1.jpeg" />
-                    <Typography className={classes.arrivalText}>It's release day! Let's get one or more of these rocks in your hands for the new season. Stop in and see us so we can get your game in shape for the new year.</Typography>
-                </div>
-                <div class="newArrivalWrapper">
-                    <StaticImage className={classes.newArrivalImage} src="../images/new_app_1.jpeg" />
-                    <Typography className={classes.arrivalText}>When you purchase the In2ition, get a FREE Apparel Package</Typography>
-                </div>
-
-                {/* <Link to="/chill-menu" class="menuContent menuLink chillBlock">
-                    Page 2
-                </Link>
-                <Link to="/grill-menu" class="menuContent menuLink grillBlock">
-                    Page 3
-                </Link> */}
             </section>
 
 
@@ -544,7 +522,7 @@ const Main = () => {
                                     Bags description                                </Typography>
                             </CardContent>
                         </Card>
-                        <Link style={{textDecoration: "none"}} to="/sports-cards">
+                        <Link style={{ textDecoration: "none" }} to="/sports-cards">
 
                             <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
                                 <StaticImage src="../images/cards_hockey_1.jpeg" />
