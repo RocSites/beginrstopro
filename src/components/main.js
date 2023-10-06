@@ -435,14 +435,11 @@ const withStyles = makeStyles(() => ({
 const Main = () => {
     const classes = withStyles();
 
-
     const [data, setData] = useState([]);
     const [response, setResponse] = useState([]);
-    const [newArrivalsUrl, setNewArrivalsUrl] = useState([]);
 
     const newArrivalBaseUrl = "https://strapi.b2pproshop.com/api/new-arrivals?populate=*"
 
-    const newArrivalObj = {};
 
     useEffect(() => {
         axios.get(newArrivalBaseUrl).then((res) => {
@@ -505,17 +502,18 @@ const Main = () => {
                 <div>
                     <Typography className={classes.someOfWorkHeaderProducts}>Products</Typography>
                     <div class="productCardWrapper">
-                        <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
-                            <StaticImage src="../images/ball_closeup.jpeg" />
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="div">
-                                    Balls
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    Balls                                </Typography>
-                            </CardContent>
-
-                        </Card>
+                        <Link style={{ textDecoration: "none" }} to="/balls">
+                            <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
+                                <StaticImage src="../images/ball_closeup.jpeg" />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        Balls
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        Balls                                </Typography>
+                                </CardContent>
+                            </Card>
+                        </Link>
                         <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
                             <StaticImage src="../images/shoewall_1.jpg" />
                             <CardContent>

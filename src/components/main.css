@@ -29,9 +29,21 @@ body {
     padding: 1rem;
 }
 
+.ballPageWrapper {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    margin-top: 112px;
+}
+
+
+
 .newArrivalRoot {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .newArrivalWrapper {
@@ -42,6 +54,31 @@ body {
     align-items: center;
     margin: 2rem;
     background-color: #a91806;
+    border-radius: 15px;
+}
+
+.featuredBallTitle {
+    text-align: center;
+    background-color: #a91806;
+    border-radius: 30px;
+    padding: 10px;
+    color: white;
+    margin-top: 50px;
+}
+
+.featuredBallWrapper {
+    display: flex;
+    margin: auto;
+}
+
+.ballWrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    background-color: #f7f6f5;
     border-radius: 15px;
 }
 
