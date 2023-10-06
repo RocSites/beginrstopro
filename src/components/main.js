@@ -67,6 +67,8 @@ const withStyles = makeStyles(() => ({
         borderRadius: "15px 0px 0 15px",
         width: "50%",
         maxHeight: "500px",
+        padding: "20px",
+        margin: "auto",
         "@media(max-width: 600px)": {
             borderRadius: "15px 15px 0px 0px",
             width: "100%"
@@ -435,26 +437,39 @@ const Main = () => {
     const classes = withStyles();
 
 
+    const [data, setData] = useState([]);
     const [response, setResponse] = useState([]);
-    const [ballsUrl, setBallsUrl] = useState([]);
+    const [newArrivalsUrl, setNewArrivalsUrl] = useState([]);
 
-    //   TODO - make calls to all content types and filter for all featured
-    // TODO - create object that builds the cards, including the formatted image urls list, as index and element order may get messy
-    const baseURLBalls = "https://strapi.b2pproshop.com/api/balls?populate=*"
+    const newArrivalBaseUrl = "https://strapi.b2pproshop.com/api/new-arrivals?populate=*"
+
+    const newArrivalObj = {};
 
     useEffect(() => {
-        axios.get(baseURLBalls).then((response) => {
-            setResponse(response.data);
-            if (response.data.data.length > 0) {
-                formatImages(response.data)
-            }
+        axios.get(newArrivalBaseUrl).then((res) => {
+            console.log(res.data)
+            formatData(res.data);
+            setResponse(res.data);
         });
     }, [])
 
-    const formatImages = (resp) => {
-        let dataArr = resp.data.map(x => x.attributes.image.data);
-        setBallsUrl(dataArr.map(obj => obj.attributes.formats.small.url))
+    const formatData = (resp) => {
+        let data = resp.data;
+
+        let dataArr = data.map(x => x.attributes.image.data);
+        let formattedDataArr = dataArr.map(obj => obj.attributes.formats.small.url);
+
+        let dataAttributes = data.map(newArrival => newArrival.attributes);
+
+        for (let i = 0; i < dataAttributes.length; i++) {
+            for (let j = 0; j < formattedDataArr.length; j++) {
+                dataAttributes[i].imageUrl = formattedDataArr[i]
+            }
+        }
+
+        setData(dataAttributes);
     }
+
 
 
     return (
@@ -473,10 +488,10 @@ const Main = () => {
 
             <section class="sectionTwoThemeColorOne">
                 <Typography className={classes.someOfWorkHeader}>New Items & Arrivals</Typography>
-                {ballsUrl.length > 0 ? ballsUrl.map(url => (
+                {data ? data.map(newArrival => (
                     <div class="newArrivalWrapper">
-                        <img className={classes.newArrivalImage} src={url} />
-                        <Typography className={classes.arrivalText}></Typography>
+                        <img key={newArrival.imageUrl} className={classes.newArrivalImage} src={newArrival.imageUrl} />
+                        <Typography className={classes.arrivalText}>{newArrival.description}</Typography>
                     </div>
                 )) : null}
 
@@ -561,14 +576,6 @@ const Main = () => {
                             </CardContent>
                         </Card>
                     </div>
-
-                    {/* {console.log(productInfo.map(obj => obj.imagePath))}
-
-                    <img src={productInfo[0].imagePath}/>
-
-                    {productInfo.length > 0 ? productInfo.map(obj =>
-                        <ProductCard key={obj.title} imagePath={obj.imagePath} title={obj.title} description={obj.description} />
-                    ) : null} */}
                 </div>
 
 
