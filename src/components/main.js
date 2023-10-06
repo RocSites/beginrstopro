@@ -554,18 +554,33 @@ const Main = () => {
                             </Card>
                         </Link>
 
-                        <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
-                            <StaticImage src="../images/trophywall_1.jpg" />
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="div">
-                                    Trophies & Engravings
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    Trophies & Engravings description
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                        <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
+                        <Link style={{ textDecoration: "none" }} to="/awards">
+                            <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
+                                <StaticImage src="../images/trophywall_1.jpg" />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        Trophies, Engravings, and Awards
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        Trophies & Engravings description
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Link>
+                        <Link style={{ textDecoration: "none" }} to="/coaching">
+                            <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
+                                <StaticImage src="../images/coaching.jpeg" />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        Coaching
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        Coaching description
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Link>
+                        {/* <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
                             <StaticImage src="../images/trophywall_2.jpg" />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="div">
@@ -575,7 +590,7 @@ const Main = () => {
                                     Awards descriptions
                                 </Typography>
                             </CardContent>
-                        </Card>
+                        </Card> */}
                     </div>
                 </div>
 
