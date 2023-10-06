@@ -4,9 +4,7 @@ import { Link } from "gatsby"
 import { makeStyles } from '@material-ui/core'
 import scrollTo from 'gatsby-plugin-smoothscroll'
 import Button from '@material-ui/core/Button'
-import chillGrillLogoOG from '../images/chill_logo_og.jpeg'
 import BeginrsLogo from "../images/beginrs_logo.jpeg"
-import coneIcon from "../images/cone_icon.png"
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -14,7 +12,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
 import PhoneIcon from '@mui/icons-material/Phone';
 import FacebookIcon from "../images/facebook_icon4.svg"
-import InstagramIcon from "../images/instagram_icon4.svg"
 import { AnchorLink } from "gatsby-plugin-anchor-links";
 
 import "./main.css"
@@ -180,9 +177,6 @@ const Header = ({ siteTitle }) => {
       </div>
 
       <div class="socialLinkWrapperNav">
-        {/* <a href="" target="_blank" class="socialLink">
-          <img class="socialNav" src={InstagramIcon} />
-        </a> */}
         <a href="https://www.facebook.com/profile.php?id=100057525366325" target="_blank" class="socialLink">
           <img class="socialNavFb" src={FacebookIcon} />
         </a>
@@ -235,9 +229,6 @@ const Header = ({ siteTitle }) => {
                 Call Us
               </Button>
               <div class="socialLinkWrapperNavMobile">
-                <a href="" target="_blank" class="socialLink">
-                  <img class="socialDrawer" src={InstagramIcon} />
-                </a>
                 <a href="" target="_blank" class="socialLink">
                   <img class="socialDrawerFb" src={FacebookIcon} />
                 </a>

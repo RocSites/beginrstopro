@@ -8,7 +8,6 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import rocBuildingOne from "../images/yassine-khalfalli-roc-image.jpg"
 import ballWallImage from "../images/ballwall_5.jpeg"
 import fiveStar from '../images/fiveStar.png'
 import Divider from '@material-ui/core/Divider'
@@ -16,7 +15,6 @@ import PhoneIcon from '@material-ui/icons/Phone'
 import EmailIcon from '@mui/icons-material/Email';
 import StarRateIcon from '@material-ui/icons/StarRate';
 import FacebookIcon from "../images/facebook_icon4.svg"
-import InstagramIcon from "../images/instagram_icon4.svg"
 import GoogleIcon from "../images/google_icon.png"
 import "./main.css"
 
@@ -514,27 +512,32 @@ const Main = () => {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
-                            <StaticImage src="../images/shoewall_1.jpg" />
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="div">
-                                    Shoes
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    Shoe description
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                        <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
-                            <StaticImage src="../images/just_bags.jpeg" />
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="div">
-                                    Bags
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    Bags description                                </Typography>
-                            </CardContent>
-                        </Card>
+                        <Link style={{ textDecoration: "none" }} to="/shoes">
+                            <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
+                                <StaticImage src="../images/shoewall_1.jpg" />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        Shoes
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        Shoe description
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Link>
+                        <Link style={{ textDecoration: "none" }} to="/bags">
+
+                            <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
+                                <StaticImage src="../images/just_bags.jpeg" />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        Bags
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        Bags description                                </Typography>
+                                </CardContent>
+                            </Card>
+                        </Link>
                         <Link style={{ textDecoration: "none" }} to="/sports-cards">
 
                             <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
@@ -643,9 +646,6 @@ const Main = () => {
                                 </Button>
                             </a>
                             <div className={classes.socialLinkWrapper}>
-                                {/* <a href="" target="_blank" className={classes.socialLink}>
-                                    <img className={classes.socialFooter} src={InstagramIcon} />
-                                </a> */}
                                 <a href="https://www.facebook.com/profile.php?id=100057525366325" target="_blank" className={classes.socialLink}>
                                     <img className={classes.socialFacebookSpacing} src={FacebookIcon} />
                                 </a>
