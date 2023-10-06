@@ -65,9 +65,8 @@ const withStyles = makeStyles(() => ({
     },
     newArrivalImage: {
         borderRadius: "15px 0px 0 15px",
-        width: "50%",
-        maxHeight: "500px",
-        padding: "20px",
+        width: "80%",
+        padding: "30px",
         margin: "auto",
         "@media(max-width: 600px)": {
             borderRadius: "15px 15px 0px 0px",
@@ -77,7 +76,7 @@ const withStyles = makeStyles(() => ({
     arrivalText: {
         color: "#deddc1",
         padding: "30px",
-        width: "50%",
+        width: "100%",
         "@media(max-width: 600px)": {
             width: "100%"
         }
@@ -488,13 +487,14 @@ const Main = () => {
 
             <section class="sectionTwoThemeColorOne">
                 <Typography className={classes.someOfWorkHeader}>New Items & Arrivals</Typography>
-                {data ? data.map(newArrival => (
-                    <div class="newArrivalWrapper">
-                        <img key={newArrival.imageUrl} className={classes.newArrivalImage} src={newArrival.imageUrl} />
-                        <Typography className={classes.arrivalText}>{newArrival.description}</Typography>
-                    </div>
-                )) : null}
-
+                <div class="newArrivalRoot">
+                    {data ? data.map(newArrival => (
+                        <div class="newArrivalWrapper">
+                            <img key={newArrival.imageUrl} className={classes.newArrivalImage} src={newArrival.imageUrl} />
+                            <Typography className={classes.arrivalText}>{newArrival.description}</Typography>
+                        </div>
+                    )) : null}
+                </div>
             </section>
 
 
