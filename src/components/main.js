@@ -411,6 +411,7 @@ const withStyles = makeStyles(() => ({
     productCard: {
         margin: "15px",
         backgroundColor: "#a91806 !important",
+        height: "450px",
         "& img": {
             maxHeight: "345px",
             width: "100%",
@@ -507,8 +508,9 @@ const Main = () => {
                                     <Typography gutterBottom variant="h5" component="div">
                                         Balls
                                     </Typography>
-                                    <Typography variant="body2" color="text.secondary">
-                                        Balls                                </Typography>
+                                    {/* <Typography variant="body2" color="text.secondary">
+                                        Balls                                
+                                    </Typography> */}
                                 </CardContent>
                             </Card>
                         </Link>
@@ -519,9 +521,9 @@ const Main = () => {
                                     <Typography gutterBottom variant="h5" component="div">
                                         Shoes
                                     </Typography>
-                                    <Typography variant="body2" color="text.secondary">
+                                    {/* <Typography variant="body2" color="text.secondary">
                                         Shoe description
-                                    </Typography>
+                                    </Typography> */}
                                 </CardContent>
                             </Card>
                         </Link>
@@ -533,8 +535,9 @@ const Main = () => {
                                     <Typography gutterBottom variant="h5" component="div">
                                         Bags
                                     </Typography>
-                                    <Typography variant="body2" color="text.secondary">
-                                        Bags description                                </Typography>
+                                    {/* <Typography variant="body2" color="text.secondary">
+                                        Bags description                                
+                                    </Typography> */}
                                 </CardContent>
                             </Card>
                         </Link>
@@ -547,9 +550,9 @@ const Main = () => {
                                     <Typography gutterBottom variant="h5" component="div">
                                         Sports Cards
                                     </Typography>
-                                    <Typography variant="body2" color="text.secondary">
+                                    {/* <Typography variant="body2" color="text.secondary">
                                         Sports cards description
-                                    </Typography>
+                                    </Typography> */}
                                 </CardContent>
                             </Card>
                         </Link>
@@ -559,11 +562,24 @@ const Main = () => {
                                 <StaticImage src="../images/trophywall_1.jpg" />
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="div">
-                                        Trophies, Engravings, and Awards
+                                        Custom Trophies, Engravings, and Awards
                                     </Typography>
-                                    <Typography variant="body2" color="text.secondary">
+                                    {/* <Typography variant="body2" color="text.secondary">
                                         Trophies & Engravings description
+                                    </Typography> */}
+                                </CardContent>
+                            </Card>
+                        </Link>
+                        <Link style={{ textDecoration: "none" }} to="/closeouts">
+                            <Card className={classes.productCard} sx={{ maxWidth: 345 }}>
+                                <StaticImage src="../images/ball_closeup.jpeg" />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        Closeouts
                                     </Typography>
+                                    {/* <Typography variant="body2" color="text.secondary">
+                                        Trophies & Engravings description
+                                    </Typography> */}
                                 </CardContent>
                             </Card>
                         </Link>
@@ -574,9 +590,9 @@ const Main = () => {
                                     <Typography gutterBottom variant="h5" component="div">
                                         Coaching
                                     </Typography>
-                                    <Typography variant="body2" color="text.secondary">
+                                    {/* <Typography variant="body2" color="text.secondary">
                                         Coaching description
-                                    </Typography>
+                                    </Typography> */}
                                 </CardContent>
                             </Card>
                         </Link>
