@@ -458,13 +458,14 @@ const Main = () => {
 
     const formatHours = (resp) => {
         let data = resp.data;
-        let formattedHourData = data.map(x => x.attributes)
+        let dataSort = data.sort((day1, day2) => day1.id - day2.id);
+        let formattedHourData = dataSort.map(x => x.attributes)
         setHours(formattedHourData)
     }
 
     const formatData = (resp) => {
         let data = resp.data;
-
+        
         let dataArr = data.map(x => x.attributes.image.data);
         let formattedDataArr = dataArr.map(obj => obj.attributes.formats.small.url);
 

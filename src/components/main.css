@@ -400,6 +400,24 @@ body {
     padding: 20px;
 }
 
+.awardsCardWrapper {
+    display: flex;
+    padding: 25px;
+}
+
+.awardsCardWrapper ul li {
+    width: 150px;
+}
+
+.awardsCardWrapperSecond {
+    display: flex;
+    padding: 25px;
+}
+
+.awardsCardWrapperSecond ul li {
+    width: 150px;
+}
+
 @keyframes twinkle {
     from {
         transform: translateX(1vw);
@@ -427,7 +445,7 @@ body {
 
     .socialLink {}
 
-    .aboutSectionWrapper iframe {
+    .mapWrapper iframe {
         width: 90%;
         margin: auto;
     }
@@ -459,5 +477,15 @@ body {
     .shoeWrapper {
         flex: 100%;
         max-width: 400px;
+    }
+
+    .awardsCardWrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .awardsCardWrapperSecond {
+        flex-wrap: wrap-reverse;
+        justify-content: center;
     }
 }
