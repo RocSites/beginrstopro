@@ -23,12 +23,12 @@ const withStyles = makeStyles(() => ({
     },
     newArrivalImage: {
         borderRadius: "15px 0px 0 15px",
-        width: "80%",
+        width: "350px",
         padding: "30px",
         margin: "auto",
         "@media(max-width: 600px)": {
             borderRadius: "15px 15px 0px 0px",
-            width: "100%"
+            padding: "10px"
         }
     },
     arrivalText: {
@@ -65,7 +65,6 @@ const Balls = () => {
         Promise.all(endpoints.map((endpoint) => axios.get(endpoint))).then(
             axios.spread((...allData) => {
                 let combineDataFlat = allData.map(obj => obj.data.data).flat();
-                console.log(allData.map(obj => obj.data.data).flat())
                 formatData(combineDataFlat);
                 setResponse(combineDataFlat);
             })
@@ -81,9 +80,7 @@ const Balls = () => {
     const formatData = (resp) => {
         let data = resp;
         let dataArr = data.map(x => x.attributes.image.data);
-        console.log(dataArr)
         let formattedDataArr = dataArr.map(obj => obj.attributes.formats.small || obj.attributes.formats.thumbnail || obj.attributes.formats.medium);
-        console.log(formattedDataArr)
         let dataAttributes = data.map(newArrival => newArrival.attributes);
 
         for (let i = 0; i < dataAttributes.length; i++) {
@@ -94,7 +91,6 @@ const Balls = () => {
 
         let closeOuts = dataAttributes.filter((item => item.closeout === true))
         setFeatured(closeOuts)
-        console.log(closeOuts)
         // featured ordered first
         setData(dataAttributes.sort((a, b) => a.featured - b.featured));
     }
@@ -110,7 +106,7 @@ const Balls = () => {
                 <div class="featuredBallWrapper">
                     {featured ? featured.map(ball => (
                         <>
-                            {ball.link ? <a href={`${ball.link}`} target="_blank">
+                            {ball.link ? <a style={{textDecoration: "none"}} href={`${ball.link}`} target="_blank">
                                 <div class="ballWrapper">
                                     <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl.url} />
                                     <Typography className={classes.arrivalText}>{ball.name}</Typography>

@@ -21,12 +21,12 @@ const withStyles = makeStyles(() => ({
   },
   newArrivalImage: {
     borderRadius: "15px 0px 0 15px",
-    width: "80%",
+    width: "350px",
     padding: "30px",
-    margin: "auto",
+    margin: "0 auto",
     "@media(max-width: 600px)": {
       borderRadius: "15px 15px 0px 0px",
-      width: "100%"
+      padding: "10px"
     }
   },
   arrivalText: {
@@ -91,16 +91,28 @@ const Balls = () => {
         {featured ? <h2 class="featuredBallTitle">Featured Balls</h2> : null}
 
         <div class="featuredBallWrapper">
-          {featured ? featured.map(ball => (
-            <>
-              <div class="ballWrapper">
-                <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
-                <Typography className={classes.arrivalText}>{ball.description}</Typography>
-              </div>
-            </>
+                    {featured ? featured.map(ball => (
+                        <>
+                            {ball.link ? <a style={{textDecoration: "none"}} href={`${ball.link}`} target="_blank">
+                                <div class="ballWrapper">
+                                    <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
+                                    <Typography className={classes.arrivalText}>{ball.name}</Typography>
+                                    <Typography className={classes.arrivalText}>{ball.description}</Typography>
+                                    {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
+                                        : null}
+                                </div>
+                            </a> : <div class="ballWrapper">
+                                <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
+                                <Typography className={classes.arrivalText}>{ball.name}</Typography>
+                                <Typography className={classes.arrivalText}>{ball.description}</Typography>
+                                {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
+                                    : null}
+                            </div>}
 
-          )) : null}
-        </div>
+                        </>
+
+                    )) : null}
+                </div>
         <h2 class="featuredBallTitle">All Balls</h2>
 
         <div class="newArrivalRoot">

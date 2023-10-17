@@ -65,7 +65,7 @@ const withStyles = makeStyles(() => ({
         borderRadius: "15px 0px 0 15px",
         width: "80%",
         padding: "30px",
-        margin: "auto",
+        margin: "0px auto",
         "@media(max-width: 600px)": {
             borderRadius: "15px 15px 0px 0px",
             width: "100%"
