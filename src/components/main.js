@@ -436,17 +436,31 @@ const Main = () => {
 
     const [data, setData] = useState([]);
     const [response, setResponse] = useState([]);
+    const [hours, setHours] = useState(null);
 
     const newArrivalBaseUrl = "https://strapi.b2pproshop.com/api/new-arrivals?populate=*"
+
+    const hoursUrl = "https://strapi.b2pproshop.com/api/hours"
 
 
     useEffect(() => {
         axios.get(newArrivalBaseUrl).then((res) => {
-            console.log(res.data)
             formatData(res.data);
             setResponse(res.data);
         });
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        axios.get(hoursUrl).then((res) => {
+            formatHours(res.data)
+        });
+    }, []);
+
+    const formatHours = (resp) => {
+        let data = resp.data;
+        let formattedHourData = data.map(x => x.attributes)
+        setHours(formattedHourData)
+    }
 
     const formatData = (resp) => {
         let data = resp.data;
@@ -694,18 +708,14 @@ const Main = () => {
                         <div style={{ backgroundColor: "white" }}>
                             <Typography className={classes.connectHeader}>Hours</Typography>
                             <div class="hoursWrapper">
-                                <div class="hoursDayTime">
-                                    <p>Monday - Friday</p>
-                                    <p class="hoursTime">11:00 AM - 6:00 PM</p>
-                                </div>
-                                <div class="hoursDayTime">
-                                    <p>Saturday</p>
-                                    <p class="hoursTime">11:00 AM - 3:00 PM</p>
-                                </div>
-                                <div class="hoursDayTime">
-                                    <p>Sunday</p>
-                                    <p class="hoursTime">Closed</p>
-                                </div>
+                                {hours ? hours.map(data => (
+                                    <div class="hoursDayTime">
+                                        <p>{data.day}</p>
+                                        {data.day === "Sunday" ? <p class="hoursTime">Closed</p> : (
+                                            <p class="hoursTime">{data.openTime} - {data.closeTime}</p>
+                                        )}
+                                    </div>
+                                )) : null}
                             </div>
                             <div className={classes.reviewsWrapper}>
                                 <a className={classes.reviewLink}
