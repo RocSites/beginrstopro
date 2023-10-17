@@ -55,24 +55,36 @@ const Balls = () => {
     //   TODO - need to make request for all endpoints (bags, balls, cards, shoes) that have a closeout = true
     const newArrivalBaseUrl = "https://strapi.b2pproshop.com/api/balls?populate=*"
 
+    const getCloseoutData = () => {
+        let endpoints = [
+            "https://strapi.b2pproshop.com/api/balls?populate=*",
+            "https://strapi.b2pproshop.com/api/bags?populate=*",
+            "https://strapi.b2pproshop.com/api/shoes?populate=*"
+        ];
+
+        Promise.all(endpoints.map((endpoint) => axios.get(endpoint))).then(
+            axios.spread((...allData) => {
+                let combineDataFlat = allData.map(obj => obj.data.data).flat();
+                console.log(allData.map(obj => obj.data.data).flat())
+                formatData(combineDataFlat);
+                setResponse(combineDataFlat);
+            })
+        );
+    }
+
     const newArrivalObj = {};
 
     useEffect(() => {
-        axios.get(newArrivalBaseUrl).then((res) => {
-            console.log(res.data)
-            formatData(res.data);
-            setResponse(res.data);
-        });
+        getCloseoutData();
     }, [])
 
     const formatData = (resp) => {
-        let data = resp.data;
-
+        let data = resp;
         let dataArr = data.map(x => x.attributes.image.data);
-        let formattedDataArr = dataArr.map(obj => obj.attributes.formats.small.url);
-
+        console.log(dataArr)
+        let formattedDataArr = dataArr.map(obj => obj.attributes.formats.small || obj.attributes.formats.thumbnail || obj.attributes.formats.medium);
+        console.log(formattedDataArr)
         let dataAttributes = data.map(newArrival => newArrival.attributes);
-        console.log(dataAttributes)
 
         for (let i = 0; i < dataAttributes.length; i++) {
             for (let j = 0; j < formattedDataArr.length; j++) {
@@ -82,6 +94,7 @@ const Balls = () => {
 
         let closeOuts = dataAttributes.filter((item => item.closeout === true))
         setFeatured(closeOuts)
+        console.log(closeOuts)
         // featured ordered first
         setData(dataAttributes.sort((a, b) => a.featured - b.featured));
     }
@@ -97,16 +110,16 @@ const Balls = () => {
                 <div class="featuredBallWrapper">
                     {featured ? featured.map(ball => (
                         <>
-                            {ball.link ? <a href={`${ball.link}`}>
+                            {ball.link ? <a href={`${ball.link}`} target="_blank">
                                 <div class="ballWrapper">
-                                    <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
+                                    <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl.url} />
                                     <Typography className={classes.arrivalText}>{ball.name}</Typography>
                                     <Typography className={classes.arrivalText}>{ball.description}</Typography>
                                     {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
                                         : null}
                                 </div>
                             </a> : <div class="ballWrapper">
-                                <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
+                                <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl.url} />
                                 <Typography className={classes.arrivalText}>{ball.name}</Typography>
                                 <Typography className={classes.arrivalText}>{ball.description}</Typography>
                                 {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
