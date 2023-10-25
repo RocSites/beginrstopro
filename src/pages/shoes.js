@@ -92,36 +92,50 @@ const Shoes = () => {
         {featured ? <h2 class="featuredBallTitle">Featured Shoes</h2> : null}
 
         <div class="featuredBallWrapper">
-                    {featured ? featured.map(ball => (
-                        <>
-                            {ball.link ? <a style={{textDecoration: "none"}} href={`${ball.link}`} target="_blank">
-                                <div class="ballWrapper">
-                                    <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
-                                    <Typography className={classes.arrivalText}>{ball.name}</Typography>
-                                    <Typography className={classes.arrivalText}>{ball.description}</Typography>
-                                    {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
-                                        : null}
-                                </div>
-                            </a> : <div class="ballWrapper">
-                                <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
-                                <Typography className={classes.arrivalText}>{ball.name}</Typography>
-                                <Typography className={classes.arrivalText}>{ball.description}</Typography>
-                                {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
-                                    : null}
-                            </div>}
-
-                        </>
-
-                    )) : null}
+          {featured ? featured.map(ball => (
+            <>
+              {ball.link ? <a style={{ textDecoration: "none" }} href={`${ball.link}`} target="_blank">
+                <div class="ballWrapper">
+                  <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
+                  <Typography className={classes.arrivalText}>{ball.name}</Typography>
+                  <Typography className={classes.arrivalText}>{ball.description}</Typography>
+                  {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
+                    : null}
                 </div>
+              </a> : <div class="ballWrapper">
+                <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
+                <Typography className={classes.arrivalText}>{ball.name}</Typography>
+                <Typography className={classes.arrivalText}>{ball.description}</Typography>
+                {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
+                  : null}
+              </div>}
+
+            </>
+
+          )) : null}
+        </div>
         <h2 class="featuredBallTitle">All Shoes</h2>
 
         <div class="newArrivalRoot">
-          {data ? data.map(newArrival => (
-            <div class="shoeWrapper">
-              <img key={newArrival.imageUrl} className={classes.newArrivalImage} src={newArrival.imageUrl} />
-              <Typography className={classes.arrivalText}>{newArrival.description}</Typography>
-            </div>
+          {data ? data.map(shoe => (
+            <>
+              {shoe.link ? <a style={{ textDecoration: "none" }} href={`${shoe.link}`} target="_blank">
+                <div class="ballWrapper">
+                  <img key={shoe.imageUrl} className={classes.newArrivalImage} src={shoe.imageUrl} />
+                  <Typography className={classes.arrivalText}>{shoe.name}</Typography>
+                  <Typography className={classes.arrivalText}>{shoe.description}</Typography>
+                  {shoe.price ? <Typography className={classes.arrivalText}>${shoe.price}</Typography>
+                    : null}
+                </div>
+              </a> : <div class="ballWrapper">
+                <img key={shoe.imageUrl} className={classes.newArrivalImage} src={shoe.imageUrl} />
+                <Typography className={classes.arrivalText}>{shoe.name}</Typography>
+                <Typography className={classes.arrivalText}>{shoe.description}</Typography>
+                {shoe.price ? <Typography className={classes.arrivalText}>${shoe.price}</Typography>
+                  : null}
+              </div>}
+
+            </>
           )) : null}
         </div>
       </section>

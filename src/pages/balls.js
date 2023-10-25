@@ -52,8 +52,6 @@ const Balls = () => {
 
   const newArrivalBaseUrl = "https://strapi.b2pproshop.com/api/balls?populate=*"
 
-  const newArrivalObj = {};
-
   useEffect(() => {
     axios.get(newArrivalBaseUrl).then((res) => {
       console.log(res.data)

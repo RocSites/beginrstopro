@@ -88,15 +88,18 @@ const SportsCards = () => {
       <SEO title="Cards" />
       <section class="ballPageWrapper">
         <Typography className={classes.someOfWorkHeader}>Sports Cards</Typography>
-        <p style={{textAlign: "center", marginTop: "25px", color: "white", backgroundColor: "black", padding: "20px", borderTopRightRadius: "15px", borderTopLeftRadius: "15px"}}>We are always looking to purchase, trade, and sell all types of sporting cards, <b>especially vintage (1975 & older)</b></p>
+        <p style={{ textAlign: "center", marginTop: "25px", color: "white", backgroundColor: "black", padding: "20px", borderTopRightRadius: "15px", borderTopLeftRadius: "15px" }}>We are always looking to purchase, trade, and sell all types of sporting cards, <b>especially vintage (1975 & older)</b></p>
         {featured ? <h2 class="featuredBallTitle">Featured Cards</h2> : null}
 
         <div class="featuredBallWrapper">
-          {featured ? featured.map(ball => (
+          {featured ? featured.map(card => (
             <>
               <div class="ballWrapper">
-                <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
-                <Typography className={classes.arrivalText}>{ball.description}</Typography>
+                <img key={card.imageUrl} className={classes.newArrivalImage} src={card.imageUrl} />
+                <Typography className={classes.arrivalText}>{card.name}</Typography>
+                <Typography className={classes.arrivalText}>{card.description}</Typography>
+                {card.price ? <Typography className={classes.arrivalText}>${card.price}</Typography>
+                  : null}
               </div>
             </>
 
@@ -105,10 +108,13 @@ const SportsCards = () => {
         <h2 class="featuredBallTitle">All Cards</h2>
 
         <div class="newArrivalRoot">
-          {data ? data.map(newArrival => (
+          {data ? data.map(card => (
             <div class="ballWrapper">
-              <img key={newArrival.imageUrl} className={classes.newArrivalImage} src={newArrival.imageUrl} />
-              <Typography className={classes.arrivalText}>{newArrival.description}</Typography>
+              <img key={card.imageUrl} className={classes.newArrivalImage} src={card.imageUrl} />
+              <Typography className={classes.arrivalText}>{card.name}</Typography>
+              <Typography className={classes.arrivalText}>{card.description}</Typography>
+              {card.price ? <Typography className={classes.arrivalText}>${card.price}</Typography>
+                : null}
             </div>
           )) : null}
         </div>
