@@ -95,16 +95,18 @@ const Balls = () => {
                                 <div class="ballWrapper">
                                     <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
                                     <Typography className={classes.arrivalText}>{ball.make} {ball.model}</Typography>
-                                    <Typography className={classes.arrivalText}>{ball.description}</Typography>
                                     {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
                                         : null}
+                                    <Typography className={classes.arrivalText}>{ball.description}</Typography>
+                               
                                 </div>
                             </a> : <div class="ballWrapper">
                                 <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
                                 <Typography className={classes.arrivalText}>{ball.make} {ball.model}</Typography>
-                                <Typography className={classes.arrivalText}>{ball.description}</Typography>
                                 {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
                                     : null}
+                                <Typography className={classes.arrivalText}>{ball.description}</Typography>
+                             
                             </div>}
 
                         </>
@@ -121,16 +123,18 @@ const Balls = () => {
                  <div class="ballWrapper">
                      <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
                      <Typography className={classes.arrivalText}>{ball.make} {ball.model}</Typography>
-                     <Typography className={classes.arrivalText}>{ball.description}</Typography>
                      {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
                          : null}
+                     <Typography className={classes.arrivalText}>{ball.description}</Typography>
+          
                  </div>
              </a> : <div class="ballWrapper">
                  <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
                  <Typography className={classes.arrivalText}>{ball.make} {ball.model}</Typography>
-                 <Typography className={classes.arrivalText}>{ball.description}</Typography>
                  {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
                      : null}
+                 <Typography className={classes.arrivalText}>{ball.description}</Typography>
+           
              </div>}
 
          </>

@@ -50,10 +50,7 @@ const Balls = () => {
 
     const [data, setData] = useState([]);
     const [response, setResponse] = useState([]);
-    const [featured, setFeatured] = useState([]);
-
-    //   TODO - need to make request for all endpoints (bags, balls, cards, shoes) that have a closeout = true
-    const newArrivalBaseUrl = "https://strapi.b2pproshop.com/api/balls?populate=*"
+    const [closeouts, setCloseouts] = useState([]);
 
     const getCloseoutData = () => {
         let endpoints = [
@@ -70,8 +67,6 @@ const Balls = () => {
             })
         );
     }
-
-    const newArrivalObj = {};
 
     useEffect(() => {
         getCloseoutData();
@@ -90,7 +85,7 @@ const Balls = () => {
         }
 
         let closeOuts = dataAttributes.filter((item => item.closeout === true))
-        setFeatured(closeOuts)
+        setCloseouts(closeOuts)
         // featured ordered first
         setData(dataAttributes.sort((a, b) => a.featured - b.featured));
     }
@@ -104,19 +99,19 @@ const Balls = () => {
                 {/* {featured ? <h2 class="featuredBallTitle">Featured Closeout Items</h2> : null} */}
 
                 <div class="featuredBallWrapper">
-                    {featured ? featured.map(ball => (
+                    {closeouts ? closeouts.map(ball => (
                         <>
                             {ball.link ? <a style={{textDecoration: "none"}} href={`${ball.link}`} target="_blank">
                                 <div class="ballWrapper">
                                     <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl.url} />
-                                    <Typography className={classes.arrivalText}>{ball.name}</Typography>
+                                    <Typography className={classes.arrivalText}>{ball.make} {ball.model}</Typography>
                                     <Typography className={classes.arrivalText}>{ball.description}</Typography>
                                     {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
                                         : null}
                                 </div>
                             </a> : <div class="ballWrapper">
                                 <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl.url} />
-                                <Typography className={classes.arrivalText}>{ball.name}</Typography>
+                                <Typography className={classes.arrivalText}>{ball.make} {ball.model}</Typography>
                                 <Typography className={classes.arrivalText}>{ball.description}</Typography>
                                 {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
                                     : null}

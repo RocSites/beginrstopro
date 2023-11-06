@@ -437,20 +437,53 @@ const Main = () => {
     const [response, setResponse] = useState([]);
     const [hours, setHours] = useState(null);
     const [image, setImage] = useState(null);
-
-    const newArrivalBaseUrl = "https://strapi.b2pproshop.com/api/new-arrivals?populate=*"
+    const [newArrivals, setNewArrivals] = useState([]);
 
     const backgroundImageurl = "https://strapi.b2pproshop.com/api/home-page-background-images?populate=*"
-
     const hoursUrl = "https://strapi.b2pproshop.com/api/hours"
 
 
-    // useEffect(() => {
-    //     axios.get(newArrivalBaseUrl).then((res) => {
-    //         formatData(res.data);
-    //         setResponse(res.data);
-    //     });
-    // }, []);
+    const getNewArrivalData = () => {
+        let endpoints = [
+            "https://strapi.b2pproshop.com/api/balls?populate=*",
+            "https://strapi.b2pproshop.com/api/bags?populate=*",
+            "https://strapi.b2pproshop.com/api/shoes?populate=*"
+        ];
+
+        Promise.all(endpoints.map((endpoint) => axios.get(endpoint))).then(
+            axios.spread((...allData) => {
+                let combineDataFlat = allData.map(obj => obj.data.data).flat();
+                formatData(combineDataFlat);
+                setResponse(combineDataFlat);
+            })
+        );
+    }
+
+    useEffect(() => {
+        getNewArrivalData();
+    }, [])
+
+
+  
+    const formatData = (resp) => {
+        let data = resp;
+        let dataArr = data.map(x => x.attributes.image.data);
+        let formattedDataArr = dataArr.map(obj => obj.attributes.formats.small || obj.attributes.formats.thumbnail || obj.attributes.formats.medium);
+        let dataAttributes = data.map(newArrival => newArrival.attributes);
+
+        for (let i = 0; i < dataAttributes.length; i++) {
+            for (let j = 0; j < formattedDataArr.length; j++) {
+                dataAttributes[i].imageUrl = formattedDataArr[i]
+            }
+        }
+
+        let newArrivals = dataAttributes.filter((item => item.newArrival === true))
+        console.log(newArrivals)
+        setNewArrivals(newArrivals)
+        // featured ordered first
+        setData(dataAttributes.sort((a, b) => a.featured - b.featured));
+    }
+
 
     useEffect(() => {
         axios.get(backgroundImageurl).then((res) => {
@@ -480,22 +513,7 @@ const Main = () => {
         setHours(formattedHourData)
     }
 
-    const formatData = (resp) => {
-        let data = resp.data;
 
-        let dataArr = data.map(x => x.attributes.image.data);
-        let formattedDataArr = dataArr.map(obj => obj.attributes.formats.small.url);
-
-        let dataAttributes = data.map(newArrival => newArrival.attributes);
-
-        for (let i = 0; i < dataAttributes.length; i++) {
-            for (let j = 0; j < formattedDataArr.length; j++) {
-                dataAttributes[i].imageUrl = formattedDataArr[i]
-            }
-        }
-
-        setData(dataAttributes);
-    }
 
 
 
@@ -518,11 +536,26 @@ const Main = () => {
             <section class="sectionTwoThemeColorOne">
                 <Typography className={classes.someOfWorkHeader}>New Items & Arrivals</Typography>
                 <div class="newArrivalRoot">
-                    {data ? data.map(newArrival => (
-                        <div class="newArrivalWrapper">
-                            <img key={newArrival.imageUrl} className={classes.newArrivalImage} src={newArrival.imageUrl} />
-                            <Typography className={classes.arrivalText}>{newArrival.description}</Typography>
-                        </div>
+                    {newArrivals ? newArrivals.map(newArrival => (
+                              <>
+                              {newArrival.link ? <a style={{textDecoration: "none"}} href={`${newArrival.link}`} target="_blank">
+                                  <div class="newArrivalWrapper">
+                                      <img key={newArrival.imageUrl} className={classes.newArrivalImage} src={newArrival.imageUrl.url} />
+                                      <Typography className={classes.arrivalText}>{newArrival.make} {newArrival.model}</Typography>
+                                      {newArrival.price ? <Typography className={classes.arrivalText}>${newArrival.price}</Typography>
+                                          : null}
+                                      <Typography className={classes.arrivalText}>{newArrival.description}</Typography>
+                                  </div>
+                              </a> : <div class="newArrivalWrapper">
+                                  <img key={newArrival.imageUrl} className={classes.newArrivalImage} src={newArrival.imageUrl.url} />
+                                  <Typography className={classes.arrivalText}>{newArrival.make} {newArrival.model}</Typography>
+                                  {newArrival.price ? <Typography className={classes.arrivalText}>${newArrival.price}</Typography>
+                                      : null}
+                                  <Typography className={classes.arrivalText}>{newArrival.description}</Typography>
+                           
+                              </div>}
+  
+                          </>
                     )) : null}
                 </div>
             </section>
