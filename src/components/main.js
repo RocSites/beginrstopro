@@ -347,7 +347,6 @@ const withStyles = makeStyles(() => ({
     },
     mainBanner: {
         display: "flex",
-        backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url(${ballWallImage})`,
         backgroundSize: "cover",
         justifyContent: "flex-end",
         height: "100vh",
@@ -437,8 +436,11 @@ const Main = () => {
     const [data, setData] = useState([]);
     const [response, setResponse] = useState([]);
     const [hours, setHours] = useState(null);
+    const [image, setImage] = useState(null);
 
     const newArrivalBaseUrl = "https://strapi.b2pproshop.com/api/new-arrivals?populate=*"
+
+    const backgroundImageurl = "https://strapi.b2pproshop.com/api/home-page-background-images?populate=*"
 
     const hoursUrl = "https://strapi.b2pproshop.com/api/hours"
 
@@ -451,10 +453,25 @@ const Main = () => {
     // }, []);
 
     useEffect(() => {
+        axios.get(backgroundImageurl).then((res) => {
+            formatImage(res.data)
+        });
+    }, []);
+
+    useEffect(() => {
         axios.get(hoursUrl).then((res) => {
             formatHours(res.data)
         });
     }, []);
+
+    const formatImage = (resp) => {
+        let images = resp.data;
+        if(resp.data.length > 0){
+            setImage(images[0].attributes.image.data.attributes.url)
+        } else {
+            console.log("no homepage image uploaded")
+        }
+    }
 
     const formatHours = (resp) => {
         let data = resp.data;
@@ -465,7 +482,7 @@ const Main = () => {
 
     const formatData = (resp) => {
         let data = resp.data;
-        
+
         let dataArr = data.map(x => x.attributes.image.data);
         let formattedDataArr = dataArr.map(obj => obj.attributes.formats.small.url);
 
@@ -484,7 +501,9 @@ const Main = () => {
 
     return (
         <div className={classes.mainRoot}>
-            <div className={classes.mainBanner}>
+            <div className={classes.mainBanner} style={{
+                backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url(${image || ballWallImage})`,
+            }}>
                 <div className={classes.mainBannerTextWrapper}>
                     <Typography className={classes.mainBannerText}>Begin'rs To Pro's <br />
                         <Typography>Rochester's premier bowling supply store</Typography>

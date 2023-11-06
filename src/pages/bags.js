@@ -97,14 +97,14 @@ const Bags = () => {
               {ball.link ? <a style={{ textDecoration: "none" }} href={`${ball.link}`} target="_blank">
                 <div class="ballWrapper">
                   <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
-                  <Typography className={classes.arrivalText}>{ball.name}</Typography>
+                  <Typography className={classes.arrivalText}>{ball.make}{ball.model}</Typography>
                   <Typography className={classes.arrivalText}>{ball.description}</Typography>
                   {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
                     : null}
                 </div>
               </a> : <div class="ballWrapper">
                 <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
-                <Typography className={classes.arrivalText}>{ball.name}</Typography>
+                <Typography className={classes.arrivalText}>{ball.make}{ball.model}</Typography>
                 <Typography className={classes.arrivalText}>{ball.description}</Typography>
                 {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
                   : null}
@@ -122,14 +122,14 @@ const Bags = () => {
               {bag.link ? <a style={{ textDecoration: "none" }} href={`${bag.link}`} target="_blank">
                 <div class="ballWrapper">
                   <img key={bag.imageUrl} className={classes.newArrivalImage} src={bag.imageUrl} />
-                  <Typography className={classes.arrivalText}>{bag.name}</Typography>
+                  <Typography className={classes.arrivalText}>{bag.make}{bag.model}</Typography>
                   <Typography className={classes.arrivalText}>{bag.description}</Typography>
                   {bag.price ? <Typography className={classes.arrivalText}>${bag.price}</Typography>
                     : null}
                 </div>
               </a> : <div class="ballWrapper">
                 <img key={bag.imageUrl} className={classes.newArrivalImage} src={bag.imageUrl} />
-                <Typography className={classes.arrivalText}>{bag.name}</Typography>
+                <Typography className={classes.arrivalText}>{bag.make}{bag.model}</Typography>
                 <Typography className={classes.arrivalText}>{bag.description}</Typography>
                 {bag.price ? <Typography className={classes.arrivalText}>${bag.price}</Typography>
                   : null}
