@@ -114,11 +114,26 @@ const Balls = () => {
         <h2 class="featuredBallTitle">All Balls</h2>
 
         <div class="newArrivalRoot">
-          {data ? data.map(newArrival => (
-            <div class="ballWrapper">
-              <img key={newArrival.imageUrl} className={classes.newArrivalImage} src={newArrival.imageUrl} />
-              <Typography className={classes.arrivalText}>{newArrival.description}</Typography>
-            </div>
+          {data ? data.map(ball => (
+             <>
+             {ball.link ? 
+             <a style={{textDecoration: "none"}} href={`${ball.link}`} target="_blank">
+                 <div class="ballWrapper">
+                     <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
+                     <Typography className={classes.arrivalText}>{ball.name}</Typography>
+                     <Typography className={classes.arrivalText}>{ball.description}</Typography>
+                     {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
+                         : null}
+                 </div>
+             </a> : <div class="ballWrapper">
+                 <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
+                 <Typography className={classes.arrivalText}>{ball.name}</Typography>
+                 <Typography className={classes.arrivalText}>{ball.description}</Typography>
+                 {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
+                     : null}
+             </div>}
+
+         </>
           )) : null}
         </div>
       </section>

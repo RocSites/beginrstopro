@@ -443,12 +443,12 @@ const Main = () => {
     const hoursUrl = "https://strapi.b2pproshop.com/api/hours"
 
 
-    useEffect(() => {
-        axios.get(newArrivalBaseUrl).then((res) => {
-            formatData(res.data);
-            setResponse(res.data);
-        });
-    }, []);
+    // useEffect(() => {
+    //     axios.get(newArrivalBaseUrl).then((res) => {
+    //         formatData(res.data);
+    //         setResponse(res.data);
+    //     });
+    // }, []);
 
     useEffect(() => {
         axios.get(hoursUrl).then((res) => {
