@@ -63,6 +63,7 @@ const Balls = () => {
   const [price, setPrice] = useState('');
   const [make, setMake] = useState('')
   const [reset, setReset] = useState(false)
+  const [makes, setMakes] = useState([])
 
   const handlePriceChange = (event) => {
     setPrice(event.target.value);
@@ -115,11 +116,13 @@ const Balls = () => {
     let featuredBalls = dataAttributes.filter((ball => ball.featured === true))
     setFeatured(featuredBalls)
     // featured ordered first
-    if(filteredData) {
+    if (filteredData) {
       setFilteredData(null)
     } else {
       setData(dataAttributes.sort((a, b) => a.featured - b.featured));
-
+      let tempMakes = dataAttributes.filter(ball => ball.make).map(item => item.make.trim());
+      setMakes([...new Set(tempMakes)])
+      console.log([...new Set(tempMakes)])
     }
     setReset(false)
 
@@ -159,11 +162,10 @@ const Balls = () => {
               label=""
               onChange={handleMakeChange}
             >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={"Hammer"}>Hammer</MenuItem>
-              <MenuItem value={"Storm"}>Storm</MenuItem>
+              {makes ? makes.map(make =>
+                <MenuItem value={make}>{make}</MenuItem>
+              )
+                : null}
             </Select>
           </FormControl>
           <Button className={classes.resetFilterButton} onClick={() => resetFilters()} color="error" variant="outlined">Reset Filters</Button>
