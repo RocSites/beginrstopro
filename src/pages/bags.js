@@ -134,7 +134,7 @@ const Bags = () => {
         <Typography className={classes.someOfWorkHeader}>Bags</Typography>
         <p style={{ textAlign: "center", marginTop: "25px", padding: "20px", borderTopRightRadius: "15px", borderTopLeftRadius: "15px" }}>We offer top-quality Single, Double, and Triple Roller & Carry bags.</p>
         <div>
-          <Typography>Sort by: (excludes Featured Shoes) </Typography>
+          <Typography>Sort by: (excludes Featured Bags) </Typography>
           <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
             <InputLabel id="demo-select-small-label">Price</InputLabel>
             <Select

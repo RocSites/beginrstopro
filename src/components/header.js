@@ -13,6 +13,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import PhoneIcon from '@mui/icons-material/Phone';
 import FacebookIcon from "../images/facebook_icon4.svg"
 import { AnchorLink } from "gatsby-plugin-anchor-links";
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+
 
 import "./main.css"
 
@@ -46,6 +50,30 @@ const withStyles = makeStyles(() => ({
     textTransform: "none",
     margin: "auto 10px",
     textDecoration: "none"
+  },
+  navButtonProductDropdown: {
+    color: "white",
+    // fontWeight: "bold",
+    textTransform: "none",
+    margin: "auto 10px",
+    textDecoration: "none",
+    "& > span": {
+      fontFamily: "georgia, serif !important",
+      fontSize: "18px"
+    }
+  },
+  navButtonProductDropdownMobile: {
+    color: "black",
+    // fontWeight: "bold",
+    textTransform: "none",
+    margin: "auto 10px",
+    textDecoration: "none",
+    "& > span": {
+      display: "flex",
+      justifyContent: "flex-start",
+      fontFamily: "georgia, serif !important",
+      fontSize: "16px"
+    }
   },
   navBarButtonWrapper: {
     display: "flex",
@@ -123,12 +151,17 @@ const withStyles = makeStyles(() => ({
     flexDirection: "column",
   },
   navButtonMobile: {
-  color: "black",
-  // fontWeight: "bold",
-  textTransform: "none",
-  margin: "10px 16px",
-  textDecoration: "none"
-}
+    color: "black",
+    // fontWeight: "bold",
+    textTransform: "none",
+    margin: "10px 16px",
+    textDecoration: "none"
+  },
+  productMenuLink: {
+    textDecoration: "none",
+    color: "black",
+    margin: "auto 10px",
+  }
 }))
 
 
@@ -136,6 +169,19 @@ const Header = ({ siteTitle }) => {
 
   const classes = withStyles();
   const [openDrawer, setOpenDrawer] = useState(false)
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClickMobile = (event) => {
+    event.preventDefault()
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const toggleDrawer = () => {
     setOpenDrawer(drawerOpen => !drawerOpen)
@@ -152,9 +198,57 @@ const Header = ({ siteTitle }) => {
           </Link>
         </div>
         <div className={classes.navBarButtonWrapper}>
-          <AnchorLink className={classes.navButton}
+          {/* <AnchorLink className={classes.navButton}
             to="/#sectionTwo" title="Products">
-          </AnchorLink>
+          </AnchorLink> */}
+          <Button
+            id="demo-positioned-button"
+            aria-controls={open ? 'demo-positioned-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? 'true' : undefined}
+            onClick={handleClick}
+            className={classes.navButtonProductDropdown}
+          >
+            Products
+            <KeyboardArrowDownIcon />
+          </Button>
+          <Menu
+            id="demo-positioned-menu"
+            aria-labelledby="demo-positioned-button"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+          >
+            <MenuItem onClick={handleClose}>
+              <Link className={classes.productMenuLink} to="/balls">Balls</Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link className={classes.productMenuLink} to="/shoes">Shoes</Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link className={classes.productMenuLink} to="/bags">Bags</Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link className={classes.productMenuLink} to="/sports-cards">Sports Cards</Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link className={classes.productMenuLink} to="/awards">Custom Trophies, Engravings, and Awards</Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link className={classes.productMenuLink} to="/closeouts">Closeouts</Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link className={classes.productMenuLink} to="/coaching">Coaching</Link>
+            </MenuItem>
+          </Menu>
           <AnchorLink className={classes.navButton}
             to="/#sectionOne" title="New Arrivals">
           </AnchorLink>
@@ -164,7 +258,7 @@ const Header = ({ siteTitle }) => {
           <AnchorLink className={classes.navButton}
             to="/#contactForm" title="Contact">
           </AnchorLink>
-      
+
 
           <Button
             className={classes.navCallButton}
@@ -207,9 +301,54 @@ const Header = ({ siteTitle }) => {
           >
             <List>
               <div className={classes.drawerLinkWrapper}>
-                <AnchorLink className={classes.navButtonMobile}
-                  to="/#sectionTwo" title="Products">
-                </AnchorLink>
+                <Button
+                  id="demo-positioned-button"
+                  aria-controls={open ? 'demo-positioned-menu' : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? 'true' : undefined}
+                  onClick={handleClickMobile}
+                  className={classes.navButtonProductDropdownMobile}
+                >
+                  Products
+                  <KeyboardArrowDownIcon />
+                </Button>
+                <Menu
+                  id="demo-positioned-menu"
+                  aria-labelledby="demo-positioned-button"
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                >
+                  <MenuItem onClick={handleClose}>
+                    <Link className={classes.productMenuLink} to="/balls">Balls</Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Link className={classes.productMenuLink} to="/shoes">Shoes</Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Link className={classes.productMenuLink} to="/bags">Bags</Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Link className={classes.productMenuLink} to="/sports-cards">Sports Cards</Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Link className={classes.productMenuLink} to="/awards">Custom Trophies, Engravings, and Awards</Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Link className={classes.productMenuLink} to="/closeouts">Closeouts</Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Link className={classes.productMenuLink} to="/coaching">Coaching</Link>
+                  </MenuItem>
+                </Menu>
                 <AnchorLink className={classes.navButtonMobile}
                   to="/#sectionOne" title="New Arrivals">
                 </AnchorLink>
