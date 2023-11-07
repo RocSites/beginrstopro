@@ -10,6 +10,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Button from '@mui/material/Button';
+
 
 const withStyles = makeStyles(() => ({
   someOfWorkHeader: {
@@ -42,6 +44,10 @@ const withStyles = makeStyles(() => ({
       width: "100%"
     }
   },
+  resetFilterButton: {
+    textTransform: "none !important",
+    margin: "8px !important"
+  }
 }));
 
 
@@ -51,10 +57,12 @@ const Balls = () => {
   const classes = withStyles();
 
   const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState(null);
   const [response, setResponse] = useState([]);
   const [featured, setFeatured] = useState([]);
   const [price, setPrice] = useState('');
   const [make, setMake] = useState('')
+  const [reset, setReset] = useState(false)
 
   const handlePriceChange = (event) => {
     setPrice(event.target.value);
@@ -62,25 +70,33 @@ const Balls = () => {
   };
 
   const sortBalls = (sortBy) => {
-    if(sortBy === "high") {
-      setData(data.sort((ball1, ball2)=>ball2.price - ball1.price ))
-    } else if(sortBy === "low") {
-      setData(data.sort((ball1, ball2)=>ball1.price - ball2.price ))
+    if (sortBy === "high") {
+      setData(data.sort((ball1, ball2) => ball2.price - ball1.price))
+    } else if (sortBy === "low") {
+      setData(data.sort((ball1, ball2) => ball1.price - ball2.price))
     }
   }
 
   const handleMakeChange = (e) => {
     setMake(e.target.value)
+    let filterNullData = data.filter((ball) => ball.make);
+    setFilteredData(filterNullData.filter(ball => ball.make === e.target.value))
   }
 
-  const newArrivalBaseUrl = "https://strapi.b2pproshop.com/api/balls?populate=*"
+  const resetFilters = () => {
+    setPrice('')
+    setMake('')
+    setReset(true)
+  }
+
+  const ballsBaseUrl = "https://strapi.b2pproshop.com/api/balls?populate=*"
 
   useEffect(() => {
-    axios.get(newArrivalBaseUrl).then((res) => {
+    axios.get(ballsBaseUrl).then((res) => {
       formatData(res.data);
       setResponse(res.data);
     });
-  }, [])
+  }, [reset])
 
   const formatData = (resp) => {
     let data = resp.data;
@@ -99,13 +115,21 @@ const Balls = () => {
     let featuredBalls = dataAttributes.filter((ball => ball.featured === true))
     setFeatured(featuredBalls)
     // featured ordered first
-    setData(dataAttributes.sort((a, b) => a.featured - b.featured));
+    if(filteredData) {
+      setFilteredData(null)
+    } else {
+      setData(dataAttributes.sort((a, b) => a.featured - b.featured));
+
+    }
+    setReset(false)
+
   }
+
 
 
   return (
     <Layout>
-      <SEO title="Ball" />
+      <SEO title="Shoes" />
       <section class="ballPageWrapper">
         <Typography className={classes.someOfWorkHeader}>Balls</Typography>
         <div>
@@ -138,10 +162,11 @@ const Balls = () => {
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              <MenuItem value={"hammer"}>Hammer</MenuItem>
-              <MenuItem value={"storm"}>Storm</MenuItem>
+              <MenuItem value={"Hammer"}>Hammer</MenuItem>
+              <MenuItem value={"Storm"}>Storm</MenuItem>
             </Select>
           </FormControl>
+          <Button className={classes.resetFilterButton} onClick={() => resetFilters()} color="error" variant="outlined">Reset Filters</Button>
         </div>
         {featured ? <h2 class="featuredBallTitle">Featured Balls</h2> : null}
         <div class="featuredBallWrapper">
@@ -172,7 +197,7 @@ const Balls = () => {
         <h2 class="featuredBallTitle">All Balls</h2>
 
         <div class="newArrivalRoot">
-          {data ? data.map(ball => (
+          {filteredData ? filteredData.map(ball => (
             <>
               {ball.link ?
                 <a style={{ textDecoration: "none" }} href={`${ball.link}`} target="_blank">
@@ -194,7 +219,29 @@ const Balls = () => {
                 </div>}
 
             </>
-          )) : null}
+          )) : data.map(ball => (
+            <>
+              {ball.link ?
+                <a style={{ textDecoration: "none" }} href={`${ball.link}`} target="_blank">
+                  <div class="ballWrapper">
+                    <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
+                    <Typography className={classes.arrivalText}>{ball.make} {ball.model}</Typography>
+                    {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
+                      : null}
+                    <Typography className={classes.arrivalText}>{ball.description}</Typography>
+
+                  </div>
+                </a> : <div class="ballWrapper">
+                  <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
+                  <Typography className={classes.arrivalText}>{ball.make} {ball.model}</Typography>
+                  {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
+                    : null}
+                  <Typography className={classes.arrivalText}>{ball.description}</Typography>
+
+                </div>}
+            </>
+
+          ))}
         </div>
       </section>
     </Layout>
