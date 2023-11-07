@@ -56,7 +56,6 @@ const Bags = () => {
 
   useEffect(() => {
     axios.get(newArrivalBaseUrl).then((res) => {
-      console.log(res.data)
       formatData(res.data);
       setResponse(res.data);
     });

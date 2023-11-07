@@ -72,7 +72,7 @@ const withStyles = makeStyles(() => ({
         }
     },
     arrivalText: {
-        color: "#deddc1",
+        color: "black",
         padding: "30px",
         width: "100%",
         "@media(max-width: 600px)": {
@@ -478,7 +478,6 @@ const Main = () => {
         }
 
         let newArrivals = dataAttributes.filter((item => item.newArrival === true))
-        console.log(newArrivals)
         setNewArrivals(newArrivals)
         // featured ordered first
         setData(dataAttributes.sort((a, b) => a.featured - b.featured));

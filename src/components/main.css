@@ -49,11 +49,11 @@ body {
 .newArrivalWrapper {
     display: flex;
     flex-direction: column;
-    max-width: 500px;
+    max-width: 350px;
     justify-content: flex-start;
     align-items: center;
     margin: 2rem;
-    background-color: #a91806;
+    background-color: #d3d3d36e;
     border-radius: 15px;
 }
 
@@ -77,11 +77,12 @@ body {
     display: flex;
     flex: 0 0 33.33%;
     flex-direction: column;
-    max-width: 500px;
+    max-width: 350px;
     justify-content: flex-start;
     align-items: center;
-    background-color: white;
+    background-color: #d3d3d36e;
     border-radius: 15px;
+    margin: 10px;
 }
 
 .shoeWrapper {

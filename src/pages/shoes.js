@@ -56,7 +56,6 @@ const Shoes = () => {
 
   useEffect(() => {
     axios.get(newArrivalBaseUrl).then((res) => {
-      console.log(res.data)
       formatData(res.data);
       setResponse(res.data);
     });
@@ -67,7 +66,6 @@ const Shoes = () => {
 
     let dataArr = data.map(x => x.attributes.image.data);
     let formattedDataArr = dataArr.map(obj => obj.attributes.formats.small || obj.attributes.formats.thumbnail);
-    console.log(formattedDataArr)
     let dataAttributes = data.map(newArrival => newArrival.attributes);
 
     for (let i = 0; i < dataAttributes.length; i++) {
@@ -77,7 +75,6 @@ const Shoes = () => {
     }
 
     let featuredBalls = dataAttributes.filter((ball => ball.featured === true))
-    console.log(featuredBalls)
     setFeatured(featuredBalls)
     // featured ordered first
     setData(dataAttributes.sort((a, b) => a.featured - b.featured));

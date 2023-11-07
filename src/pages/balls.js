@@ -6,6 +6,10 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import axios from "axios"
 import "../components/main.css"
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 const withStyles = makeStyles(() => ({
   someOfWorkHeader: {
@@ -32,7 +36,7 @@ const withStyles = makeStyles(() => ({
   arrivalText: {
     color: "black",
     textAlign: "center",
-    padding: "30px",
+    padding: "15px",
     width: "100%",
     "@media(max-width: 600px)": {
       width: "100%"
@@ -49,12 +53,30 @@ const Balls = () => {
   const [data, setData] = useState([]);
   const [response, setResponse] = useState([]);
   const [featured, setFeatured] = useState([]);
+  const [price, setPrice] = useState('');
+  const [make, setMake] = useState('')
+
+  const handlePriceChange = (event) => {
+    setPrice(event.target.value);
+    sortBalls(event.target.value);
+  };
+
+  const sortBalls = (sortBy) => {
+    if(sortBy === "high") {
+      setData(data.sort((ball1, ball2)=>ball2.price - ball1.price ))
+    } else if(sortBy === "low") {
+      setData(data.sort((ball1, ball2)=>ball1.price - ball2.price ))
+    }
+  }
+
+  const handleMakeChange = (e) => {
+    setMake(e.target.value)
+  }
 
   const newArrivalBaseUrl = "https://strapi.b2pproshop.com/api/balls?populate=*"
 
   useEffect(() => {
     axios.get(newArrivalBaseUrl).then((res) => {
-      console.log(res.data)
       formatData(res.data);
       setResponse(res.data);
     });
@@ -86,58 +108,92 @@ const Balls = () => {
       <SEO title="Ball" />
       <section class="ballPageWrapper">
         <Typography className={classes.someOfWorkHeader}>Balls</Typography>
+        <div>
+          <Typography>Sort by: (excludes Featured Balls) </Typography>
+          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+            <InputLabel id="demo-select-small-label">Price</InputLabel>
+            <Select
+              labelId="demo-select-small-label"
+              id="demo-select-small"
+              value={price}
+              label="Price lower"
+              onChange={handlePriceChange}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={"high"}>Higest to Lowest</MenuItem>
+              <MenuItem value={"low"}>Lowest to Highest</MenuItem>
+            </Select>
+          </FormControl>
+          <FormControl sx={{ m: 1, minWidth: 200 }} size="small">
+            <InputLabel id="demo-select-small-label">Manufacturer</InputLabel>
+            <Select
+              labelId="demo-select-small-label"
+              id="demo-select-small"
+              value={make}
+              label=""
+              onChange={handleMakeChange}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={"hammer"}>Hammer</MenuItem>
+              <MenuItem value={"storm"}>Storm</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
         {featured ? <h2 class="featuredBallTitle">Featured Balls</h2> : null}
-
         <div class="featuredBallWrapper">
-                    {featured ? featured.map(ball => (
-                        <>
-                            {ball.link ? <a style={{textDecoration: "none"}} href={`${ball.link}`} target="_blank">
-                                <div class="ballWrapper">
-                                    <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
-                                    <Typography className={classes.arrivalText}>{ball.make} {ball.model}</Typography>
-                                    {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
-                                        : null}
-                                    <Typography className={classes.arrivalText}>{ball.description}</Typography>
-                               
-                                </div>
-                            </a> : <div class="ballWrapper">
-                                <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
-                                <Typography className={classes.arrivalText}>{ball.make} {ball.model}</Typography>
-                                {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
-                                    : null}
-                                <Typography className={classes.arrivalText}>{ball.description}</Typography>
-                             
-                            </div>}
+          {featured ? featured.map(ball => (
+            <>
+              {ball.link ? <a style={{ textDecoration: "none" }} href={`${ball.link}`} target="_blank">
+                <div class="ballWrapper">
+                  <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
+                  <Typography className={classes.arrivalText}>{ball.make} {ball.model}</Typography>
+                  {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
+                    : null}
+                  <Typography className={classes.arrivalText}>{ball.description}</Typography>
 
-                        </>
-
-                    )) : null}
                 </div>
+              </a> : <div class="ballWrapper">
+                <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
+                <Typography className={classes.arrivalText}>{ball.make} {ball.model}</Typography>
+                {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
+                  : null}
+                <Typography className={classes.arrivalText}>{ball.description}</Typography>
+
+              </div>}
+
+            </>
+
+          )) : null}
+        </div>
         <h2 class="featuredBallTitle">All Balls</h2>
 
         <div class="newArrivalRoot">
           {data ? data.map(ball => (
-             <>
-             {ball.link ? 
-             <a style={{textDecoration: "none"}} href={`${ball.link}`} target="_blank">
-                 <div class="ballWrapper">
-                     <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
-                     <Typography className={classes.arrivalText}>{ball.make} {ball.model}</Typography>
-                     {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
-                         : null}
-                     <Typography className={classes.arrivalText}>{ball.description}</Typography>
-          
-                 </div>
-             </a> : <div class="ballWrapper">
-                 <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
-                 <Typography className={classes.arrivalText}>{ball.make} {ball.model}</Typography>
-                 {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
-                     : null}
-                 <Typography className={classes.arrivalText}>{ball.description}</Typography>
-           
-             </div>}
+            <>
+              {ball.link ?
+                <a style={{ textDecoration: "none" }} href={`${ball.link}`} target="_blank">
+                  <div class="ballWrapper">
+                    <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
+                    <Typography className={classes.arrivalText}>{ball.make} {ball.model}</Typography>
+                    {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
+                      : null}
+                    <Typography className={classes.arrivalText}>{ball.description}</Typography>
 
-         </>
+                  </div>
+                </a> : <div class="ballWrapper">
+                  <img key={ball.imageUrl} className={classes.newArrivalImage} src={ball.imageUrl} />
+                  <Typography className={classes.arrivalText}>{ball.make} {ball.model}</Typography>
+                  {ball.price ? <Typography className={classes.arrivalText}>${ball.price}</Typography>
+                    : null}
+                  <Typography className={classes.arrivalText}>{ball.description}</Typography>
+
+                </div>}
+
+            </>
           )) : null}
         </div>
       </section>
