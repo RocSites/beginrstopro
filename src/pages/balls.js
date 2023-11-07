@@ -122,7 +122,6 @@ const Balls = () => {
       setData(dataAttributes.sort((a, b) => a.featured - b.featured));
       let tempMakes = dataAttributes.filter(ball => ball.make).map(item => item.make.trim());
       setMakes([...new Set(tempMakes)])
-      console.log([...new Set(tempMakes)])
     }
     setReset(false)
 
