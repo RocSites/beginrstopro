@@ -137,7 +137,7 @@ const Balls = () => {
         <div>
           <Typography>Sort by: (excludes Featured Balls) </Typography>
           <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-            <InputLabel id="demo-select-small-label">Price</InputLabel>
+            <InputLabel style={{zIndex: 0}} id="demo-select-small-label">Price</InputLabel>
             <Select
               labelId="demo-select-small-label"
               id="demo-select-small"
@@ -150,7 +150,7 @@ const Balls = () => {
             </Select>
           </FormControl>
           <FormControl sx={{ m: 1, minWidth: 200 }} size="small">
-            <InputLabel id="demo-select-small-label">Manufacturer</InputLabel>
+            <InputLabel style={{zIndex: 0}} id="demo-select-small-label">Manufacturer</InputLabel>
             <Select
               labelId="demo-select-small-label"
               id="demo-select-small"

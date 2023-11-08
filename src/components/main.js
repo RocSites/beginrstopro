@@ -364,6 +364,7 @@ const withStyles = makeStyles(() => ({
         zIndex: 1,
         height: "fit-content",
         opacity: "0.85",
+        zIndex: 0,
         // borderRadius: "35px",
         padding: "20px",
         "@media(max-width:600px)": {
