@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
-import { makeStyles } from '@material-ui/core'
+import { Typography, makeStyles } from '@material-ui/core'
 import scrollTo from 'gatsby-plugin-smoothscroll'
 import Button from '@material-ui/core/Button'
 import BeginrsLogo from "../images/beginrs_logo.jpeg"
@@ -50,30 +50,6 @@ const withStyles = makeStyles(() => ({
     textTransform: "none",
     margin: "auto 10px",
     textDecoration: "none"
-  },
-  navButtonProductDropdown: {
-    color: "white",
-    // fontWeight: "bold",
-    textTransform: "none",
-    margin: "auto 10px",
-    textDecoration: "none",
-    "& > span": {
-      fontFamily: "georgia, serif !important",
-      fontSize: "18px"
-    }
-  },
-  navButtonProductDropdownMobile: {
-    color: "black",
-    // fontWeight: "bold",
-    textTransform: "none",
-    margin: "auto 10px",
-    textDecoration: "none",
-    "& > span": {
-      display: "flex",
-      justifyContent: "flex-start",
-      fontFamily: "georgia, serif !important",
-      fontSize: "16px"
-    }
   },
   navBarButtonWrapper: {
     display: "flex",
@@ -207,9 +183,21 @@ const Header = ({ siteTitle }) => {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
             onClick={handleClick}
-            className={classes.navButtonProductDropdown}
+            style={{
+              color: "white",
+              // fontWeight: "bold",
+              textTransform: "none",
+              margin: "auto 10px",
+              textDecoration: "none"
+            }}
           >
-            Products
+            <Typography style={{
+              fontFamily: "georgia",
+              fontSize: "18px"
+            }}>
+              Products
+            </Typography>
+
             <KeyboardArrowDownIcon />
           </Button>
           <Menu
@@ -307,7 +295,19 @@ const Header = ({ siteTitle }) => {
                   aria-haspopup="true"
                   aria-expanded={open ? 'true' : undefined}
                   onClick={handleClickMobile}
-                  className={classes.navButtonProductDropdownMobile}
+                  style={{
+                    color: "black",
+                    // fontWeight: "bold",
+                    textTransform: "none",
+                    margin: "auto 10px",
+                    textDecoration: "none",
+                    "& > span": {
+                      display: "flex",
+                      justifyContent: "flex-start",
+                      fontFamily: "georgia, serif !important",
+                      fontSize: "16px"
+                    }
+                  }}
                 >
                   Products
                   <KeyboardArrowDownIcon />
