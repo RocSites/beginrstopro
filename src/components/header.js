@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
-import { Typography, makeStyles } from '@material-ui/core'
-import scrollTo from 'gatsby-plugin-smoothscroll'
-import Button from '@material-ui/core/Button'
+import Typography from '@mui/material/Typography';
+import {makeStyles} from '@material-ui/core'
+import Button from '@mui/material/Button';
 import BeginrsLogo from "../images/beginrs_logo.jpeg"
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
 import MenuIcon from '@material-ui/icons/Menu';
 import PhoneIcon from '@mui/icons-material/Phone';
 import FacebookIcon from "../images/facebook_icon4.svg"
