@@ -245,7 +245,7 @@ const Header = ({ siteTitle }) => {
 
 
           <Button
-            sx={{
+            style={{
               display: "flex",
               backgroundColor: "#a91806",
               padding: "8px 16px",
@@ -270,7 +270,7 @@ const Header = ({ siteTitle }) => {
       </div>
       <div className={classes.navBarHamburgerDrawerWrapper}>
         <Button
-          sx={{
+          style={{
             display: "flex",
             backgroundColor: "#a91806",
             padding: "8px 16px",
