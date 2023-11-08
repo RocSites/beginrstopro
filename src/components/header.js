@@ -47,6 +47,7 @@ const withStyles = makeStyles(() => ({
   navBarTitle: {
     maxWidth: 960,
     padding: `1.45rem 1.0875rem`,
+    margin: "auto"
   },
   navButton: {
     color: "white",
@@ -59,15 +60,16 @@ const withStyles = makeStyles(() => ({
     display: "flex",
     color: "white",
     margin: "10px",
-    "@media(max-width: 600px)": {
+    "@media(max-width: 800px)": {
       display: "none"
     }
   },
   navBarHamburgerDrawerWrapper: {
     display: "none",
-    "@media(max-width: 601px)": {
+    "@media(max-width: 801px)": {
       display: "flex",
-      margin: "auto 10px"
+      margin: "auto 10px",
+      marginLeft: "-20px"
     }
   },
   navLogo: {
@@ -95,7 +97,8 @@ const withStyles = makeStyles(() => ({
     margin: "20px",
     fontSize: "2.5rem",
     color: "red",
-    "@media(min-width: 601px)": {
+    marginLeft: "0px",
+    "@media(min-width: 801px)": {
       display: "none"
     }
   },
@@ -121,7 +124,7 @@ const withStyles = makeStyles(() => ({
     borderRadius: "35px",
     height: "50px",
     margin: "auto 20px",
-    "@media(max-width: 600px)": {
+    "@media(max-width: 800px)": {
       fontSize: "0.75rem",
       margin: "auto"
     }
@@ -257,7 +260,7 @@ const Header = ({ siteTitle }) => {
             }}
             target="_blank" href="tel:(585) 663-1020"
           >
-            <PhoneIcon class="drawerPhoneIcon" />
+            <PhoneIcon class="drawerPhoneIconL" />
             Call Us
           </Button>
         </div>
@@ -278,15 +281,16 @@ const Header = ({ siteTitle }) => {
             textTransform: "none",
             borderRadius: "35px",
             height: "50px",
+            width: "112px",
             margin: "auto 20px",
-            "@media(max-width: 600px)": {
+            "@media(max-width: 800px)": {
               fontSize: "0.75rem",
               margin: "auto"
             }
           }}
           target="_blank" href="tel:(585) 663-1020"
         >
-          <PhoneIcon class="drawerPhoneIcon" />
+          <PhoneIcon class="drawerPhoneIconL" />
           Call Us
         </Button>
         <MenuIcon
@@ -305,7 +309,7 @@ const Header = ({ siteTitle }) => {
           >
             <div className={classes.drawerLinkWrapper}>
               <div className="productButtonWrapperMobile">
-                <ListItemButton style={{paddingLeft: "8px", paddingBottom: "0px"}} onClick={handleClickMobile}>
+                <ListItemButton style={{paddingLeft: "8px", paddingBottom: "0px", justifyContent: "flex-start"}} onClick={handleClickMobile}>
                   <Typography style={{fontFamily: "georgia, sans-serif"}}>Products</Typography>
                   {open ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>

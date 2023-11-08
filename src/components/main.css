@@ -192,6 +192,11 @@ body {
     fill: #deddc1;
 }
 
+.drawerPhoneIconL {
+    width: 25px;
+    fill: #deddc1;
+}
+
 .productSectionWrapper {
     display: flex;
     justify-content: center;
@@ -549,7 +554,7 @@ body {
 }
 
 
-@media(max-width:600px) {
+@media(max-width:800px) {
     .menuLink {
         font-size: 1.25rem;
     }
