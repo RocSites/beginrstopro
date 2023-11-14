@@ -103,7 +103,7 @@ const Bags = () => {
     let data = resp.data;
 
     let dataArr = data.map(x => x.attributes.image.data);
-    let formattedDataArr = dataArr.map(obj => obj.attributes.formats.small.url);
+    let formattedDataArr = dataArr.map(obj => obj.attributes.url || obj.attributes.formats.small || obj.attributes.formats.thumbnail || obj.attributes.formats.medium);
 
     let dataAttributes = data.map(newArrival => newArrival.attributes);
 

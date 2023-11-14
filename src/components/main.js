@@ -679,6 +679,7 @@ const Main = () => {
 
 
             </section>
+            <span className={classes.scrollToLocation} id="sectionThree"></span>
 
             <section class="py-5 section-bubble3">
                 <div className={classes.container}>
@@ -688,7 +689,7 @@ const Main = () => {
                             <Typography className={classes.addressText}>
                                 At Begin'rs To Pro's Pro Shop, we take pride in being your trusted source for all things
                                 bowling. Whether you're an experienced pro or just starting your journey in the world of bowling, we have the expertise and
-                                equipment to help you excel. Explore our extensive collection of bowling balls, shoes, and apparel, ensuring that you find the perfect fit and style to enhance your game. Our knowledgeable staff is always available to offer expert guidance, ensuring you get the ideal gear for your unique needs.
+                                equipment to help you excel. Explore our extensive collection of bowling balls, shoes, and apparel, ensuring that you find the perfect fit and style to enhance your game. If you don't see it on our site and it's available, we can get it for you. Our knowledgeable staff is always available to offer expert guidance, ensuring you get the ideal gear for your unique needs.
                             </Typography>
                             <Typography className={classes.aboutHeader}>Sports Card Collectors' Paradise:</Typography>
                             <Typography className={classes.addressText}>
@@ -722,7 +723,6 @@ const Main = () => {
                     </div>
                 </div>
             </section>
-            <span className={classes.scrollToLocation} id="sectionThree"></span>
 
 
             <span className={classes.scrollToContact} id="contactForm"></span>
