@@ -465,7 +465,7 @@ const Main = () => {
     }, [])
 
 
-  
+
     const formatData = (resp) => {
         let data = resp;
         let dataArr = data.map(x => x.attributes.image.data);
@@ -499,7 +499,7 @@ const Main = () => {
 
     const formatImage = (resp) => {
         let images = resp.data;
-        if(resp.data.length > 0){
+        if (resp.data.length > 0) {
             setImage(images[0].attributes.image.data.attributes.url)
         } else {
             console.log("no homepage image uploaded")
@@ -537,25 +537,25 @@ const Main = () => {
                 <Typography className={classes.someOfWorkHeader}>New Items & Arrivals</Typography>
                 <div class="newArrivalRoot">
                     {newArrivals ? newArrivals.map(newArrival => (
-                              <>
-                              {newArrival.link ? <a style={{textDecoration: "none"}} href={`${newArrival.link}`} target="_blank">
-                                  <div class="newArrivalWrapper">
-                                      <img key={newArrival.imageUrl} className={classes.newArrivalImage} src={newArrival.imageUrl.url} />
-                                      <Typography className={classes.arrivalText}>{newArrival.make} {newArrival.model}</Typography>
-                                      {newArrival.price ? <Typography className={classes.arrivalText}>${newArrival.price}</Typography>
-                                          : null}
-                                      <Typography className={classes.arrivalText}>{newArrival.description}</Typography>
-                                  </div>
-                              </a> : <div class="newArrivalWrapper">
-                                  <img key={newArrival.imageUrl} className={classes.newArrivalImage} src={newArrival.imageUrl.url} />
-                                  <Typography className={classes.arrivalText}>{newArrival.make} {newArrival.model}</Typography>
-                                  {newArrival.price ? <Typography className={classes.arrivalText}>${newArrival.price}</Typography>
-                                      : null}
-                                  <Typography className={classes.arrivalText}>{newArrival.description}</Typography>
-                           
-                              </div>}
-  
-                          </>
+                        <>
+                            {newArrival.link ? <a style={{ textDecoration: "none" }} href={`${newArrival.link}`} target="_blank">
+                                <div class="newArrivalWrapper">
+                                    <img key={newArrival.imageUrl} className={classes.newArrivalImage} src={newArrival.imageUrl.url} />
+                                    <Typography className={classes.arrivalText}>{newArrival.make} {newArrival.model}</Typography>
+                                    {newArrival.price ? <Typography className={classes.arrivalText}>${newArrival.price}</Typography>
+                                        : null}
+                                    <Typography className={classes.arrivalText}>{newArrival.description}</Typography>
+                                </div>
+                            </a> : <div class="newArrivalWrapper">
+                                <img key={newArrival.imageUrl} className={classes.newArrivalImage} src={newArrival.imageUrl.url} />
+                                <Typography className={classes.arrivalText}>{newArrival.make} {newArrival.model}</Typography>
+                                {newArrival.price ? <Typography className={classes.arrivalText}>${newArrival.price}</Typography>
+                                    : null}
+                                <Typography className={classes.arrivalText}>{newArrival.description}</Typography>
+
+                            </div>}
+
+                        </>
                     )) : null}
                 </div>
             </section>
@@ -687,22 +687,24 @@ const Main = () => {
                         <div className={classes.aboutSectionWrapper}>
                             <Typography className={classes.aboutTitleHeader}>About Us</Typography>
                             <Typography className={classes.addressText}>
-                                At Begin'rs To Pro's Pro Shop, we take pride in being your trusted source for all things
-                                bowling. Whether you're an experienced pro or just starting your journey in the world of bowling, we have the expertise and
-                                equipment to help you excel. Explore our extensive collection of bowling balls, shoes, and apparel, ensuring that you find the perfect fit and style to enhance your game. If you don't see it on our site and it's available, we can get it for you. Our knowledgeable staff is always available to offer expert guidance, ensuring you get the ideal gear for your unique needs.
+                                Welcome to Begin’rs To Pro’s pro shop, where nearly 30 years in business and over 70
+                                years of drilling expertise culminate in a legacy of excellence! We are proud to be your
+                                one-stop destination for all things bowling. Our extensive inventory boasts all the latest
+                                equipment alongside timeless classics, ensuring that you get exactly what fits your
+                                needs. If you don’t see something on our site or in the store, and it’s available, we can
+                                get it for you.
                             </Typography>
-                            <Typography className={classes.aboutHeader}>Sports Card Collectors' Paradise:</Typography>
                             <Typography className={classes.addressText}>
-                                In addition to our outstanding bowling gear, Begin'rs To Pro's Pro Shop is a haven for sports card enthusiasts.
-                                We offer a diverse range of sports cards, including baseball, hockey, and vintage cards.
-                                Whether you're searching for a specific card or are looking to offload some of your own collection, we'd love to have you stop by.
+                                At Begin’rs To Pro’s, we don't just offer products; we provide a detailed experience for
+                                every bowler, from beginners to pro’s. Our seasoned professionals are dedicated to
+                                providing unparalleled service, ensuring that each ball is meticulously crafted to suit
+                                your unique style and preferences.
                             </Typography>
 
-                            <Typography className={classes.aboutHeader}>Celebrate Excellence</Typography>
-                            <Typography className={classes.addressText}>Beyond bowling and sports cards, Begin'rs To Pro's Pro Shop specializes in
-                                celebrating excellence. We provide a wide selection of trophies and awards to honor
-                                achievements in sports, academics, and more. Our expert engraving services allow you to
-                                personalize your awards, creating enduring mementos of success.
+                            <Typography className={classes.addressText}>Step into our pro shop, and let us elevate your bowling game to new heights. With us,
+                                you are not just a bowler; you are part of a tradition built on knowledge, dedication, and
+                                a genuine love for the sport. Explore our range, customize your gear, and celebrate your
+                                victories with us. Your journey to excellence begins here!
                             </Typography>
 
                             <div class="valuesWrapper">
