@@ -54,9 +54,9 @@ const Balls = () => {
 
     const getCloseoutData = () => {
         let endpoints = [
-            "https://strapi.b2pproshop.com/api/balls?populate=*",
-            "https://strapi.b2pproshop.com/api/bags?populate=*",
-            "https://strapi.b2pproshop.com/api/shoes?populate=*"
+            "https://btp-strapi-qxtpiid5ka-ue.a.run.app/api/balls?populate=*",
+            "https://btp-strapi-qxtpiid5ka-ue.a.run.app/api/bags?populate=*",
+            "https://btp-strapi-qxtpiid5ka-ue.a.run.app/api/shoes?populate=*"
         ];
 
         Promise.all(endpoints.map((endpoint) => axios.get(endpoint))).then(

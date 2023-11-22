@@ -90,7 +90,7 @@ const Balls = () => {
     setReset(true)
   }
 
-  const ballsBaseUrl = "https://strapi.b2pproshop.com/api/balls?populate=*"
+  const ballsBaseUrl = "https://btp-strapi-qxtpiid5ka-ue.a.run.app/api/balls?populate=*"
 
   useEffect(() => {
     axios.get(ballsBaseUrl).then((res) => {

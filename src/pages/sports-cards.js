@@ -50,7 +50,7 @@ const SportsCards = () => {
   const [response, setResponse] = useState([]);
   const [featured, setFeatured] = useState([]);
 
-  const newArrivalBaseUrl = "https://strapi.b2pproshop.com/api/cards?populate=*"
+  const newArrivalBaseUrl = "https://btp-strapi-qxtpiid5ka-ue.a.run.app/api/cards?populate=*"
 
   const newArrivalObj = {};
 

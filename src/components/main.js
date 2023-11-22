@@ -441,15 +441,15 @@ const Main = () => {
     const [newArrivals, setNewArrivals] = useState([]);
     const [specials, setSpecials] = useState([]);
 
-    const backgroundImageurl = "https://strapi.b2pproshop.com/api/home-page-background-images?populate=*"
-    const hoursUrl = "https://strapi.b2pproshop.com/api/hours"
+    const backgroundImageurl = "https://btp-strapi-qxtpiid5ka-ue.a.run.app/api/home-page-background-images?populate=*"
+    const hoursUrl = "https://btp-strapi-qxtpiid5ka-ue.a.run.app/api/hours"
 
 
     const getNewArrivalData = () => {
         let endpoints = [
-            "https://strapi.b2pproshop.com/api/balls?populate=*",
-            "https://strapi.b2pproshop.com/api/bags?populate=*",
-            "https://strapi.b2pproshop.com/api/shoes?populate=*"
+            "https://btp-strapi-qxtpiid5ka-ue.a.run.app/api/balls?populate=*",
+            "https://btp-strapi-qxtpiid5ka-ue.a.run.app/api/bags?populate=*",
+            "https://btp-strapi-qxtpiid5ka-ue.a.run.app/api/shoes?populate=*"
         ];
 
         Promise.all(endpoints.map((endpoint) => axios.get(endpoint))).then(

@@ -89,7 +89,7 @@ const Shoes = () => {
     setReset(true)
   }
 
-  const newArrivalBaseUrl = "https://strapi.b2pproshop.com/api/shoes?populate=*"
+  const newArrivalBaseUrl = "https://btp-strapi-qxtpiid5ka-ue.a.run.app/api/shoes?populate=*"
 
 
   useEffect(() => {
