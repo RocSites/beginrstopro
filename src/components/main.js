@@ -530,6 +530,37 @@ const Main = () => {
                 </div>
             </div>
             <div className={classes.container}>
+                <span className={classes.scrollToSectionOne} id="sectionZero"></span>
+            </div>
+
+            <section class="sectionTwoThemeColorOne">
+                <Typography className={classes.someOfWorkHeader}>Specials</Typography>
+                <div class="newArrivalRoot">
+                    {newArrivals ? newArrivals.map(newArrival => (
+                        <>
+                            {newArrival.link ? <a style={{ textDecoration: "none" }} href={`${newArrival.link}`} target="_blank">
+                                <div class="newArrivalWrapper">
+                                    <img key={newArrival.imageUrl} className={classes.newArrivalImage} src={newArrival.imageUrl.url} />
+                                    <Typography className={classes.arrivalText}>{newArrival.make} {newArrival.model}</Typography>
+                                    {newArrival.price ? <Typography className={classes.arrivalText}>${newArrival.price}</Typography>
+                                        : null}
+                                    <Typography className={classes.arrivalText}>{newArrival.description}</Typography>
+                                </div>
+                            </a> : <div class="newArrivalWrapper">
+                                <img key={newArrival.imageUrl} className={classes.newArrivalImage} src={newArrival.imageUrl.url} />
+                                <Typography className={classes.arrivalText}>{newArrival.make} {newArrival.model}</Typography>
+                                {newArrival.price ? <Typography className={classes.arrivalText}>${newArrival.price}</Typography>
+                                    : null}
+                                <Typography className={classes.arrivalText}>{newArrival.description}</Typography>
+
+                            </div>}
+
+                        </>
+                    )) : null}
+                </div>
+            </section>
+
+            <div className={classes.container}>
                 <span className={classes.scrollToSectionOne} id="sectionOne"></span>
             </div>
 
@@ -705,6 +736,19 @@ const Main = () => {
                                 you are not just a bowler; you are part of a tradition built on knowledge, dedication, and
                                 a genuine love for the sport. Explore our range, customize your gear, and celebrate your
                                 victories with us. Your journey to excellence begins here!
+                            </Typography>
+                            <Typography className={classes.aboutHeader}>Sports Card Collectors' Paradise:</Typography>
+                            <Typography className={classes.addressText}>
+                                In addition to our outstanding bowling gear, Begin'rs To Pro's Pro Shop is a haven for sports card enthusiasts.
+                                We offer a diverse range of sports cards, including baseball, hockey, and vintage cards.
+                                Whether you're searching for a specific card or are looking to offload some of your own collection, we'd love to have you stop by.
+                            </Typography>
+
+                            <Typography className={classes.aboutHeader}>Celebrate Excellence</Typography>
+                            <Typography className={classes.addressText}>Beyond bowling and sports cards, Begin'rs To Pro's Pro Shop specializes in
+                                celebrating excellence. We provide a wide selection of trophies and awards to honor
+                                achievements in sports, academics, and more. Our expert engraving services allow you to
+                                personalize your awards, creating enduring mementos of success.
                             </Typography>
 
                             <div class="valuesWrapper">

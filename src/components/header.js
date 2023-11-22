@@ -237,6 +237,9 @@ const Header = ({ siteTitle }) => {
               : null}
           </div>
           <AnchorLink className={classes.navButton}
+            to="/#sectionZero" title="Specials">
+          </AnchorLink>
+          <AnchorLink className={classes.navButton}
             to="/#sectionOne" title="New Arrivals">
           </AnchorLink>
           <AnchorLink className={classes.navButton}
@@ -309,19 +312,19 @@ const Header = ({ siteTitle }) => {
           >
             <div className={classes.drawerLinkWrapper}>
               <div className="productButtonWrapperMobile">
-                <ListItemButton style={{paddingLeft: "8px", paddingBottom: "0px", justifyContent: "flex-start"}} onClick={handleClickMobile}>
-                  <Typography style={{fontFamily: "georgia, sans-serif"}}>Products</Typography>
+                <ListItemButton style={{ paddingLeft: "8px", paddingBottom: "0px", justifyContent: "flex-start" }} onClick={handleClickMobile}>
+                  <Typography style={{ fontFamily: "georgia, sans-serif" }}>Products</Typography>
                   {open ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
                 <Collapse in={open} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
-                  <List>
-                    {productMenuItems[0].submenu.map((submenu, index) => (
-                      <ListItemText key={index} className="menu-items">
-                        <a style={{fontFamily: "georgia, sans-serif", paddingLeft: "16px"}} href={submenu.url}>{submenu.title}</a>
-                      </ListItemText>
-                    ))}
-                  </List>
+                    <List>
+                      {productMenuItems[0].submenu.map((submenu, index) => (
+                        <ListItemText key={index} className="menu-items">
+                          <a style={{ fontFamily: "georgia, sans-serif", paddingLeft: "16px" }} href={submenu.url}>{submenu.title}</a>
+                        </ListItemText>
+                      ))}
+                    </List>
                   </List>
                 </Collapse>
                 {dropdown ?
@@ -341,6 +344,9 @@ const Header = ({ siteTitle }) => {
               onKeyDown={toggleDrawer}
               style={{ display: "flex", flexDirection: "column" }}
             >
+              <AnchorLink className={classes.navButtonMobile}
+                to="/#sectionZero" title="Specials">
+              </AnchorLink>
               <AnchorLink className={classes.navButtonMobile}
                 to="/#sectionOne" title="New Arrivals">
               </AnchorLink>
