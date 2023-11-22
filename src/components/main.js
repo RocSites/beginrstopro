@@ -439,6 +439,7 @@ const Main = () => {
     const [hours, setHours] = useState(null);
     const [image, setImage] = useState(null);
     const [newArrivals, setNewArrivals] = useState([]);
+    const [specials, setSpecials] = useState([]);
 
     const backgroundImageurl = "https://strapi.b2pproshop.com/api/home-page-background-images?populate=*"
     const hoursUrl = "https://strapi.b2pproshop.com/api/hours"
@@ -480,6 +481,10 @@ const Main = () => {
 
         let newArrivals = dataAttributes.filter((item => item.newArrival === true))
         setNewArrivals(newArrivals)
+
+
+        let specials = dataAttributes.filter((item => item.special === true))
+        setSpecials(specials)
         // featured ordered first
         setData(dataAttributes.sort((a, b) => a.featured - b.featured));
     }
@@ -536,7 +541,7 @@ const Main = () => {
             <section class="sectionTwoThemeColorOne">
                 <Typography className={classes.someOfWorkHeader}>Specials</Typography>
                 <div class="newArrivalRoot">
-                    {newArrivals ? newArrivals.map(newArrival => (
+                    {specials ? specials.map(newArrival => (
                         <>
                             {newArrival.link ? <a style={{ textDecoration: "none" }} href={`${newArrival.link}`} target="_blank">
                                 <div class="newArrivalWrapper">
