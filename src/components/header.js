@@ -213,11 +213,12 @@ const Header = ({ siteTitle }) => {
             <img className={classes.navLogo} src={BeginrsLogo} alt="company logo" />
           </Link>
         </div>
-        <div className={classes.navBarButtonWrapper}>
+        <div className={classes.navBarButtonWrapper} onMouseLeave={() => setDropdown(false)}
+        >
           <div className="productButtonWrapper">
             <button
               aria-expanded={dropdown ? "true" : "false"}
-              onClick={() => setDropdown((prev) => !prev)}
+              onMouseEnter={() => setDropdown(true)}
               style={{
                 backgroundColor: "black",
                 border: "transparent"
