@@ -89,7 +89,7 @@ const SportsCards = () => {
       <section class="ballPageWrapper">
         <Typography className={classes.someOfWorkHeader}>Sports Cards</Typography>
         <p style={{ textAlign: "center", marginTop: "25px", color: "white", backgroundColor: "black", padding: "20px", borderTopRightRadius: "15px", borderTopLeftRadius: "15px" }}>We are always looking to purchase, trade, and sell all types of sporting cards, <b>especially vintage (1975 & older)</b></p>
-        <p style={{textAlign: "center"}}>Feel free to check out our store on<span>
+        <p style={{textAlign: "center"}}>Check out our store on<span>
           <a  href="https://www.ebay.com/str/bbuckert24" target="_blank">
           <StaticImage style={{width: "100px", objectFit: "contain", verticalAlign: "middle", marginLeft: "7px"}} src="../images/ebay_image.png" />
 

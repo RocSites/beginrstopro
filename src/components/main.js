@@ -801,6 +801,11 @@ const Main = () => {
                             </div>
 
                         </div>
+                        <p style={{ textAlign: "center" }}>Check out our store on<span>
+                            <a href="https://www.ebay.com/str/bbuckert24" target="_blank">
+                                <StaticImage style={{ width: "100px", objectFit: "contain", verticalAlign: "middle", marginLeft: "7px" }} src="../images/ebay_image.png" />
+
+                            </a></span></p>
                         <div class="mapWrapper">
                             <Typography style={{ margin: "15px" }}>1584 W Ridge Rd, Rochester, NY 14615</Typography>
                             <Button className={classes.getDirectionsLinkDark} href="https://www.google.com/search?q=begin%27rs+to+pro%27s&oq=beg&aqs=chrome.0.69i59j69i61l2j69i60l3j69i61j69i65.949j0j7&sourceid=chrome&ie=UTF-8#" target="_blank">
