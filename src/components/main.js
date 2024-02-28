@@ -443,13 +443,14 @@ const Main = () => {
 
     const backgroundImageurl = "https://btp-strapi-qxtpiid5ka-ue.a.run.app/api/home-page-background-images?populate=*"
     const hoursUrl = "https://btp-strapi-qxtpiid5ka-ue.a.run.app/api/hours"
+    const honorRollUrl =  "https://btp-strapi-qxtpiid5ka-ue.a.run.app/api/honor-rolls?populate=*"
 
 
     const getNewArrivalData = () => {
         let endpoints = [
             "https://btp-strapi-qxtpiid5ka-ue.a.run.app/api/balls?populate=*",
             "https://btp-strapi-qxtpiid5ka-ue.a.run.app/api/bags?populate=*",
-            "https://btp-strapi-qxtpiid5ka-ue.a.run.app/api/shoes?populate=*"
+            "https://btp-strapi-qxtpiid5ka-ue.a.run.app/api/shoes?populate=*",
         ];
 
         Promise.all(endpoints.map((endpoint) => axios.get(endpoint))).then(
@@ -485,6 +486,7 @@ const Main = () => {
 
         let specials = dataAttributes.filter((item => item.special === true))
         setSpecials(specials)
+
         // featured ordered first
         setData(dataAttributes.sort((a, b) => a.featured - b.featured));
     }

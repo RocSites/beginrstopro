@@ -243,6 +243,9 @@ const Header = ({ siteTitle }) => {
           <AnchorLink className={classes.navButton}
             to="/#sectionOne" title="New Arrivals">
           </AnchorLink>
+          <Link className={classes.navButton}
+            to="/honor-roll"> Honor Roll
+          </Link>
           <AnchorLink className={classes.navButton}
             to="/#sectionThree" title="About">
           </AnchorLink>
@@ -322,7 +325,7 @@ const Header = ({ siteTitle }) => {
                     <List>
                       {productMenuItems[0].submenu.map((submenu, index) => (
                         <ListItemText key={index} className="menu-items">
-                          <a style={{ fontFamily: "georgia, sans-serif", paddingLeft: "16px" }} href={submenu.url}>{submenu.title}</a>
+                          <a style={{ fontFamily: "georgia, sans-serif", paddingLeft: "32px" }} href={submenu.url}>{submenu.title}</a>
                         </ListItemText>
                       ))}
                     </List>
@@ -351,6 +354,9 @@ const Header = ({ siteTitle }) => {
               <AnchorLink className={classes.navButtonMobile}
                 to="/#sectionOne" title="New Arrivals">
               </AnchorLink>
+              <Link className={classes.navButtonMobile}
+                to="/honor-roll"> Honor Roll
+              </Link>
               <AnchorLink className={classes.navButtonMobile}
                 to="/#sectionThree" title="About">
               </AnchorLink>
