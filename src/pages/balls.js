@@ -145,7 +145,7 @@ const Balls = () => {
               label="Price lower"
               onChange={handlePriceChange}
             >
-              <MenuItem value={"high"}>Higest to Lowest</MenuItem>
+              <MenuItem value={"high"}>Highest to Lowest</MenuItem>
               <MenuItem value={"low"}>Lowest to Highest</MenuItem>
             </Select>
           </FormControl>
